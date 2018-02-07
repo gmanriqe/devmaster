@@ -2,7 +2,7 @@ SELECT * FROM produccion.tbEmprendimiento;
 SELECT * FROM produccion.tbUbigeo;
 
 -- 1. Crear un esquema con las iniciales de sus nombres y apellidos. Por ejemplo,
--- para Sofía Valentín Chávez su esquema será SVCH (1 punto).
+-- para Sofia Valentin Chavez su esquema sera SVCH (1 punto).
 CREATE SCHEMA JAGM;
 
 -- 2. Sobre su esquema crear una tabla con la siguiente estructura. No campos
@@ -16,14 +16,15 @@ distrito varchar(100) not null
 )
 
 -- 3. Sobre su tabla creada insertar todos los ubigeos del departamento de Lima.
--- Tomar como fuente de información el archivo primer-parcial.xlsx (3
--- puntos)
+-- Tomar como fuente de informacion el archivo primer-parcial.xlsx (3puntos)
+-- Excel: ="select '"&A2&"' union all "
+
 INSERT INTO JAGM.tbUbigeo
 SELECT '150101','LIMA','LIMA','LIMA' UNION ALL
 SELECT '150102','LIMA','LIMA','ANCON' UNION ALL
 SELECT '150103','LIMA','LIMA','ATE' UNION ALL
 SELECT '150104','LIMA','LIMA','BARRANCO' UNION ALL
-SELECT '150105','LIMA','LIMA','BREÑA' UNION ALL
+SELECT '150105','LIMA','LIMA','BREï¿½A' UNION ALL
 SELECT '150106','LIMA','LIMA','CARABAYLLO' UNION ALL
 SELECT '150107','LIMA','LIMA','CHACLACAYO' UNION ALL
 SELECT '150108','LIMA','LIMA','CHORRILLOS' UNION ALL
@@ -79,22 +80,22 @@ SELECT '150404','LIMA','CANTA','HUAROS' UNION ALL
 SELECT '150405','LIMA','CANTA','LACHAQUI' UNION ALL
 SELECT '150406','LIMA','CANTA','SAN BUENAVENTURA' UNION ALL
 SELECT '150407','LIMA','CANTA','SANTA ROSA DE QUIVES' UNION ALL
-SELECT '150501','LIMA','CAÑETE','SAN VICENTE DE CAÑETE' UNION ALL
-SELECT '150502','LIMA','CAÑETE','ASIA' UNION ALL
-SELECT '150503','LIMA','CAÑETE','CALANGO' UNION ALL
-SELECT '150504','LIMA','CAÑETE','CERRO AZUL' UNION ALL
-SELECT '150505','LIMA','CAÑETE','CHILCA' UNION ALL
-SELECT '150506','LIMA','CAÑETE','COAYLLO' UNION ALL
-SELECT '150507','LIMA','CAÑETE','IMPERIAL' UNION ALL
-SELECT '150508','LIMA','CAÑETE','LUNAHUANA' UNION ALL
-SELECT '150509','LIMA','CAÑETE','MALA' UNION ALL
-SELECT '150510','LIMA','CAÑETE','NUEVO IMPERIAL' UNION ALL
-SELECT '150511','LIMA','CAÑETE','PACARAN' UNION ALL
-SELECT '150512','LIMA','CAÑETE','QUILMANA' UNION ALL
-SELECT '150513','LIMA','CAÑETE','SAN ANTONIO' UNION ALL
-SELECT '150514','LIMA','CAÑETE','SAN LUIS' UNION ALL
-SELECT '150515','LIMA','CAÑETE','SANTA CRUZ DE FLORES' UNION ALL
-SELECT '150516','LIMA','CAÑETE','ZUÑIGA' UNION ALL
+SELECT '150501','LIMA','CAï¿½ETE','SAN VICENTE DE CAï¿½ETE' UNION ALL
+SELECT '150502','LIMA','CAï¿½ETE','ASIA' UNION ALL
+SELECT '150503','LIMA','CAï¿½ETE','CALANGO' UNION ALL
+SELECT '150504','LIMA','CAï¿½ETE','CERRO AZUL' UNION ALL
+SELECT '150505','LIMA','CAï¿½ETE','CHILCA' UNION ALL
+SELECT '150506','LIMA','CAï¿½ETE','COAYLLO' UNION ALL
+SELECT '150507','LIMA','CAï¿½ETE','IMPERIAL' UNION ALL
+SELECT '150508','LIMA','CAï¿½ETE','LUNAHUANA' UNION ALL
+SELECT '150509','LIMA','CAï¿½ETE','MALA' UNION ALL
+SELECT '150510','LIMA','CAï¿½ETE','NUEVO IMPERIAL' UNION ALL
+SELECT '150511','LIMA','CAï¿½ETE','PACARAN' UNION ALL
+SELECT '150512','LIMA','CAï¿½ETE','QUILMANA' UNION ALL
+SELECT '150513','LIMA','CAï¿½ETE','SAN ANTONIO' UNION ALL
+SELECT '150514','LIMA','CAï¿½ETE','SAN LUIS' UNION ALL
+SELECT '150515','LIMA','CAï¿½ETE','SANTA CRUZ DE FLORES' UNION ALL
+SELECT '150516','LIMA','CAï¿½ETE','ZUï¿½IGA' UNION ALL
 SELECT '150601','LIMA','HUARAL','HUARAL' UNION ALL
 SELECT '150602','LIMA','HUARAL','ATAVILLOS ALTO' UNION ALL
 SELECT '150603','LIMA','HUARAL','ATAVILLOS BAJO' UNION ALL
@@ -173,7 +174,7 @@ SELECT '151013','LIMA','YAUYOS','HUAMPARA' UNION ALL
 SELECT '151014','LIMA','YAUYOS','HUANCAYA' UNION ALL
 SELECT '151015','LIMA','YAUYOS','HUANGASCAR' UNION ALL
 SELECT '151016','LIMA','YAUYOS','HUANTAN' UNION ALL
-SELECT '151017','LIMA','YAUYOS','HUAÑEC' UNION ALL
+SELECT '151017','LIMA','YAUYOS','HUAï¿½EC' UNION ALL
 SELECT '151018','LIMA','YAUYOS','LARAOS' UNION ALL
 SELECT '151019','LIMA','YAUYOS','LINCHA' UNION ALL
 SELECT '151020','LIMA','YAUYOS','MADEAN' UNION ALL
@@ -188,34 +189,52 @@ SELECT '151028','LIMA','YAUYOS','TANTA' UNION ALL
 SELECT '151029','LIMA','YAUYOS','TAURIPAMPA' UNION ALL
 SELECT '151030','LIMA','YAUYOS','TOMAS' UNION ALL
 SELECT '151031','LIMA','YAUYOS','TUPE' UNION ALL
-SELECT '151032','LIMA','YAUYOS','VIÑAC' UNION ALL
+SELECT '151032','LIMA','YAUYOS','VIï¿½AC' UNION ALL
 SELECT '151033','LIMA','YAUYOS','VITIS' 
 
 SELECT * FROM JAGM.tbUbigeo;
 
 -- 4. Liste el codigo, departamento, provincia y distrito de los ubigeos del
--- departamento de JUNIN y con población menor a 6000. Además, considere
+-- departamento de JUNIN y con poblacion menor a 6000. Ademas, considere
 -- el siguiente cuadro para mostrar un mensaje considerando los rangos de la
--- población (3 puntos)
+-- poblaciï¿½n (3 puntos)
 SELECT codigo, departamento, distrito,
 	CASE 
-		WHEN poblacion <= 2000 THEN 'Población [0-2000]' 
-		WHEN poblacion > 2000 AND poblacion <= 4000 THEN 'Población [2001-4000]'
-		WHEN poblacion > 4000 AND poblacion <= 6000 THEN 'Población [4001-6000]' 
+		WHEN poblacion <= 2000 THEN 'Poblacion [0-2000]' 
+		WHEN poblacion > 2000 AND poblacion <= 4000 THEN 'Poblacion [2001-4000]'
+		WHEN poblacion > 4000 AND poblacion <= 6000 THEN 'Poblacion [4001-6000]' 
 	END AS mensaje
 FROM produccion.tbUbigeo
 WHERE departamento = 'JUNIN' AND
 		poblacion < 6000;
 
--- 5. Listar en una sola consulta el departamento, provincia, distrito, población y
--- areakm2 de los ubigeos (5 puntos).
--- NOTA: Los ubigeos que se visualizarán cumplen una, dos o tres de las
--- condiciones indicadas.	-- 5.1 Con departamento AMAZONAS, población menor a 6000 y areakm2 mayor a 200.
-	-- 5.2 Con departamento HUANUCO, provincia DOS DE MAYO y población mayor a 5000.
-	-- 5.3 Con JUAN dentro del nombre del distrito y estado del ubigeo 1.SELECT  departamento, provincia, distrito, poblacion, areakm2FROM produccion.tbUbigeoWHERE (departamento = 'AMAZONAS' AND poblacion < 6000 AND areakm2 > 200 ) OR	  (departamento = 'HUANUCO' AND provincia = 'DOS DE MAYO' AND poblacion > 5000 ) OR	  (distrito = 'JUAN' AND estado = 1)-- 6. Muestre el código, departamento, provincia, distrito y población de aquellos
--- ubigeos vigentes. Además, presente los resultados ordenados de manera
+-- 5. Listar en una sola consulta el departamento, provincia, distrito, poblacion y
+-- area_km2 de los ubigeos (5 puntos).
+-- NOTA: Los ubigeos que se visualizarcionn cumplen una, dos o tres de las
+-- condiciones indicadas.
+
+-- 5.1 Con departamento AMAZONAS, poblacion menor a 6000 y area_km2 mayor a 200.
+-- 5.2 Con departamento HUANUCO, provincia DOS DE MAYO y poblacion mayor a 5000.
+-- 5.3 Con JUAN dentro del nombre del distrito y estado del ubigeo 1.
+SELECT  departamento, provincia, distrito, poblacion, areakm2
+FROM produccion.tbUbigeo
+WHERE (departamento = 'AMAZONAS' AND poblacion < 6000 AND areakm2 > 200 ) OR
+	  (departamento = 'HUANUCO' AND provincia = 'DOS DE MAYO' AND poblacion > 5000 ) OR
+	  (distrito = 'JUAN' AND estado = 1)
+
+-- 6. Muestre el codigo, departamento, provincia, distrito y poblacion de aquellos
+-- ubigeos vigentes. Ademas, presente los resultados ordenados de manera
 -- descendente por departamento en un primer nivel y en un segundo nivel, por
--- población de manera ascendente (3 puntos).SELECT codigo, departamento, provincia, distrito, poblacion, estadoFROM produccion.tbUbigeoWHERE estado = 1ORDER BY departamento DESC, poblacion ASC-- 7. Liste el ruc, razón social y nombre comercial de los 5 primeros
--- emprendimientos, ordenados por número de ruc de manera ascendente, que
--- tengan la palabra “COMERCIAL” dentro de su razón social (2 puntos)
-SELECT top 5 with ties ruc, razonsocial, nombrecomercialFROM produccion.tbEmprendimientoWHERE razonsocial LIKE '%comercial%'ORDER BY ruc ASC
+-- poblacion de manera ascendente (3 puntos).
+SELECT codigo, departamento, provincia, distrito, poblacion, estado
+FROM produccion.tbUbigeo
+WHERE estado = 1
+ORDER BY departamento DESC, poblacion ASC
+
+-- 7. Liste el ruc, razon social y nombre comercial de los 5 primeros
+-- emprendimientos, ordenados por numero de ruc de manera ascendente, que
+-- tengan la palabra COMERCIAL dentro de su razon social (2 puntos)
+SELECT top 5 with ties ruc, razonsocial, nombrecomercial
+FROM produccion.tbEmprendimiento
+WHERE razonsocial LIKE '%comercial%'
+ORDER BY ruc ASC
