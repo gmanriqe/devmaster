@@ -29,7 +29,8 @@ idpelicula int references tbPelicula(idpelicula)
 primary key (idcategoria, idpelicula) --idcategoria+idpelicula son irrepetibles
 )
 
--- modificando estructura de tabla tbCategoriaPelicula, añadiendole una columna del tipo fecha y hora con valor
+-- modificando estructura de tabla tbCategoriaPelicula, aï¿½adiendole una 
+-- columna del tipo fecha y hora con valor
 -- por defecto del servidor
 ALTER TABLE tbCategoriaPelicula add fecregistro datetime default getdate()
 ALTER TABLE tbCategoriaPelicula add comentario varchar(100) default ''
@@ -50,20 +51,21 @@ SELECT idCategoria as micategoria, fecregistro,
 FROM tbCategoriaPelicula
 ORDER BY micategoria asc, micomentario desc
 
--- toda vez que se requiera listar los países, la base de datos debe enviar el id,
--- nombre de cada país ordenado por nombre de manera ascendente.
+-- toda vez que se requiera listar los paï¿½ses, la base de datos debe enviar el id,
+-- nombre de cada paï¿½s ordenado por nombre de manera ascendente.
 SELECT idpais, nombrepais
 FROM tbPais
 ORDER BY nombrepais ASC
 
--- taller de ordenamiento y filtrado (añadido por excel)
+-- taller de ordenamiento y filtrado (aï¿½adido por excel)
 -- https://classroom.google.com/c/ODEyMjMzOTYxMFpa
+-- insertando registros en tbPais con el commando excel: ="select '"&A2&"' union all "
 INSERT INTO tbPais
 select 'BELGICA' union all 
 select 'BULGARIA' union all 
 select 'CHIPRE' union all 
 select 'DINAMARCA' union all 
-select 'ESPAÑA' union all 
+select 'ESPAï¿½A' union all 
 select 'FINLANDIA' union all 
 select 'FRANCIA' union all 
 select 'GRECIA' union all 
@@ -200,9 +202,9 @@ select 'REPUBLICA DOMINICANA' union all
 select 'TRINIDAD Y TOBAGO' union all 
 select 'SANTA LUCIA' union all 
 select 'SAN CRISTOBAL Y NIEVES' union all 
-select 'ISLAS CAIMÁN' union all 
+select 'ISLAS CAIMï¿½N' union all 
 select 'ISLAS TURCAS Y CAICOS' union all 
-select 'ISLAS VÍRGENES DE LOS ESTADOS UNIDOS' union all 
+select 'ISLAS Vï¿½RGENES DE LOS ESTADOS UNIDOS' union all 
 select 'GUADALUPE' union all 
 select 'ANTILLAS HOLANDESAS' union all 
 select 'SAN MARTIN (PARTE FRANCESA)' union all 
@@ -274,7 +276,7 @@ select 'UZBEKISTAN' union all
 select 'ISLAS MARIANAS DEL NORTE' union all 
 select 'PALESTINA' union all 
 select 'HONG KONG' union all 
-select 'BHUTÁN' union all 
+select 'BHUTï¿½N' union all 
 select 'GUAM' union all 
 select 'MACAO' union all 
 select 'OTROS PAISES O TERRITORIOS DE ASIA' union all 
@@ -309,16 +311,16 @@ SELECT * FROM tbPais
 -- alterando la tabla pais, editando el atributo nombre
 ALTER TABLE tbPais alter column nombrepais varchar(100)
 
--- Elaborar un reporte que liste las películas registradas entre el 26/11/2017 y
--- el 01/12/2017.Además, si es una película peruana debe mostrar el mensaje
--- ‘Película Nacional’. Caso contrario, ‘Película del extranjero’.
+-- Elaborar un reporte que liste las pelï¿½culas registradas entre el 26/11/2017 y
+-- el 01/12/2017.Ademï¿½s, si es una pelï¿½cula peruana debe mostrar el mensaje
+-- ï¿½Pelï¿½cula Nacionalï¿½. Caso contrario, ï¿½Pelï¿½cula del extranjeroï¿½.
 
 
 -- 2017-11-26 13:07:03.303 (este formato es el 112)
 SELECT nombre,  CONVERT(varchar(8), fecregistro,112) as fecregistro,
-CASE WHEN idpais = 1 
-	 then 'Pelicula Nacional'
-	 else 'Pelicula del extranjero'
+CASE 
+	WHEN idpais = 1 THEN 'Pelicula Nacional'
+	ELSE 'Pelicula del extranjero'
 END AS Mensaje
 FROM tbPelicula
 WHERE CONVERT(varchar(8), fecregistro,112) >= '20171126' and -- un predicado puede traer verdadero o falso
@@ -344,9 +346,9 @@ FROM tbPelicula
 WHERE CONVERT(varchar(8), fecregistro,112) BETWEEN '20171126' AND  '20171203' -- un predicado puede traer verdadero o falso
 
 -- ejemplo con el operador LIKE = como
--- Elaborar un reporte que liste las películas cuyo nombre contenga la palabra
--- ‘MA’. Además, considere el siguiente cuadro para mostrar en base a la
--- duración en minutos un mensaje:
+-- Elaborar un reporte que liste las pelï¿½culas cuyo nombre contenga la palabra
+-- ï¿½MAï¿½. Ademï¿½s, considere el siguiente cuadro para mostrar en base a la
+-- duraciï¿½n en minutos un mensaje:
 SELECT *,
 CASE 
 	WHEN duracionmin >= 0 and duracionmin <= 59 THEN 'PELICULA NO CUMPLE LOS ESTANDARES DE LA PLATAFORMA' 
@@ -359,13 +361,13 @@ WHERE nombre LIKE '%MA%' -- obtener las peliculas con MA en cualquier parte del 
 
 
 -- 4. Elaborar un reporte que liste en una sola consulta:
--- 4.1 Películas con año de estreno 2015 y duración en minutos mayor a 100
+-- 4.1 Pelï¿½culas con aï¿½o de estreno 2015 y duraciï¿½n en minutos mayor a 100
 
 SELECT *
 FROM tbPelicula
 WHERE estreno = 2015 AND duracionmin > 100 or estreno > 2016
 
--- 5. Elaborar un reporte que liste las películas no estrenadas en el año 2015.
+-- 5. Elaborar un reporte que liste las pelï¿½culas no estrenadas en el aï¿½o 2015.
 SELECT *
 FROM tbPelicula
 WHERE estreno != 2015
@@ -375,9 +377,9 @@ WHERE estreno != 2015
 -- not in(2015)
 
 -- 6. En base al requerimiento 1, elabore un reporte que liste los 10 primeros
--- países ordenados por nombre de manera descendente. Este reporte recibe un
--- parámetro que indica si incluirá filas con valores que coinciden con la
--- posición 10.
+-- paï¿½ses ordenados por nombre de manera descendente. Este reporte recibe un
+-- parï¿½metro que indica si incluirï¿½ filas con valores que coinciden con la
+-- posiciï¿½n 10.
 -- BIT = true o false
 SELECT * FROM tbPais
 
@@ -385,14 +387,14 @@ SELECT TOP(10) WITH TIES nombrepais
 FROM tbPais
 ORDER BY nombrepais DESC
 
--- 7. Elabore la consulta base para el paginado de películas:
+-- 7. Elabore la consulta base para el paginado de pelï¿½culas:
 -- 7.1 Si el usuario marca 1 la plataforma debe mostrar las 5 primeras
--- películas ordenadas por fecha de registro de manera descendente.
+-- pelï¿½culas ordenadas por fecha de registro de manera descendente.
 -- 7.2 Si el usuario marca 2 la plataforma debe mostrar las siguientes 5
--- primeras películas ordenadas por fecha de registro de manera
--- descendente. Así sucesivamente para las demás pestañas
+-- primeras pelï¿½culas ordenadas por fecha de registro de manera
+-- descendente. Asï¿½ sucesivamente para las demï¿½s pestaï¿½as
 -- 1 2 3 4 5 6 7 8 9 10
 
--- 8. Elabore un reporte con los usuarios registrados sin confirmación de su
--- cuenta. Además, debe mostrar un mensaje de ‘Usuario sin confirmar al
--- <fecha-hoy>’.
+-- 8. Elabore un reporte con los usuarios registrados sin confirmaciï¿½n de su
+-- cuenta. Ademï¿½s, debe mostrar un mensaje de ï¿½Usuario sin confirmar al
+-- <fecha-hoy>ï¿½.

@@ -1,12 +1,12 @@
 --10122014
 
 -- Ejemplo con offset-fetch
--- 7. Elabore la consulta base para el paginado de películas:
+-- 7. Elabore la consulta base para el paginado de peliculas:
 	-- 7.1 Si el usuario marca 1 la plataforma debe mostrar las 5 primeras
-	-- películas ordenadas por fecha de registro de manera descendente.
+	-- peliculas ordenadas por fecha de registro de manera descendente.
 	-- 7.2 Si el usuario marca 2 la plataforma debe mostrar las siguientes 5
-	-- primeras películas ordenadas por fecha de registro de manera
-	-- descendente. Así sucesivamente para las demás pestañas 
+	-- primeras peliculas ordenadas por fecha de registro de manera
+	-- descendente. Asi sucesivamente para las demas pestaÃ±as 
 
 SELECT *
 FROM dbo.tbPelicula
@@ -16,44 +16,43 @@ FETCH NEXT 5 ROW ONLY
 
 -- quienes son los usuario con fecha de confirmacion desconocida (null)
 SELECT alias, correo,
-	   CASE 
+	CASE 
 		WHEN fechconfirma is null THEN 'FECHA NO CONFIRMA POR USUARIO'
-	   ELSE
-		'EL USUARIO CONFIRMO EL' + CONVERT(varchar(8), fechconfirma, 112)
-	   END as mensaje
+		ELSE 'EL USUARIO CONFIRMO EL' + CONVERT(varchar(8), fechconfirma, 112)
+	END AS mensaje
 FROM tbUsuario
 WHERE fechconfirma is null -- valores desconocidos
 -- WHERE fechconfirma in not null -- valores conocidos
 
 -- 3. USO DEL LIKE
--- 0Elabore un reporte que reciba como entrada un número de opción y liste los
--- países cuyo nombre:
+-- Elabore un reporte que reciba como entrada un numero de opcion y liste los
+-- paises cuyo nombre:
 SELECT *
 FROM tbPais
---WHERE nombrepais LIKE '[aeiou]%' -- Inicia con una vocal
---WHERE nombrepais LIKE '[^aeiou]%' -- Inicia con una consonante
+-- WHERE nombrepais LIKE '[aeiou]%' -- Inicia con una vocal
+-- WHERE nombrepais LIKE '[^aeiou]%' -- Inicia con una consonante
 -- WHERE nombrepais LIKE '[^aeiou]%' AND nombrepais NOT LIKE '%-%'-- Paises que no contengan algun caracter especial
--- WHERE nombrepais LIKE 'a%a' --Inicia y termina con una “a”
--- WHERE nombrepais LIKE '%ama%' -- Contenga la secuencia “ama”
--- WHERE nombrepais LIKE '_u%i_' --Segunda letra es una “u” y penúltima la “i” (HABLANDO DE POSICIONES ESPECIFICAS)
--- WHERE nombrepais LIKE '_u%[^i]__' -- Segunda letra es una “u” y antepenúltima diferente a “i”
--- WHERE nombrepais LIKE '_u%[^io]__'-- Segunda letra es una “u” y antepenúltima diferente a “i” o diferente a "o"
--- WHERE nombrepais LIKE '_u%[^i]__' -- Contenga una “a” seguida del carácter sombrero, seguida de la letra “b”
--- WHERE nombrepais LIKE '%[aeiou]n[^aeiou]%'  --Contenga una vocal seguida de la letra “n”, seguida de una consonante.
+-- WHERE nombrepais LIKE 'a%a' -- Inicia y termina con una ï¿½aï¿½
+-- WHERE nombrepais LIKE '%ama%' -- Contenga la secuencia ï¿½amaï¿½
+-- WHERE nombrepais LIKE '_u%i_' --Segunda letra es una ï¿½uï¿½ y penï¿½ltima la ï¿½iï¿½ (HABLANDO DE POSICIONES ESPECIFICAS)
+-- WHERE nombrepais LIKE '_u%[^i]__' -- Segunda letra es una ï¿½uï¿½ y antepenï¿½ltima diferente a ï¿½iï¿½
+-- WHERE nombrepais LIKE '_u%[^io]__'-- Segunda letra es una ï¿½uï¿½ y antepenï¿½ltima diferente a ï¿½iï¿½ o diferente a "o"
+-- WHERE nombrepais LIKE '_u%[^i]__' -- Contenga una ï¿½aï¿½ seguida del carï¿½cter sombrero, seguida de la letra ï¿½bï¿½
+-- WHERE nombrepais LIKE '%[aeiou]n[^aeiou]%'  --Contenga una vocal seguida de la letra ï¿½nï¿½, seguida de una consonante.
 
 -- **** TALLER DE CONSULTA A MULTIPLES TABLAS ****
 --RECUERDA: predicado = comparar contra algo
 
 -- uso del CROSS JOIN
---1. Liste todas las combinaciones de categorías de películas y planes.
+--1. Liste todas las combinaciones de categorï¿½as de pelï¿½culas y planes.
 SELECT cat.nombrecategoria, pla.nombre
 FROM tbCategoria cat
 CROSS JOIN tbPlan pla
 ORDER BY cat.nombrecategoria
 
 -- uso del INNER JOIN (interseccion de conjunto xD)
---2. Liste por cada película el nombre, resumen, año de estreno, duración en
---minutos y nombre del país.
+--2. Liste por cada pelï¿½cula el nombre, resumen, aï¿½o de estreno, duraciï¿½n en
+--minutos y nombre del paï¿½s.
 SELECT pel.nombre, 
        pel.resumen, 
 	   pel.estreno,
@@ -67,26 +66,22 @@ ON pel.idpais = pais.idpais -- bajo que campos se asocian
 SELECT * FROM PrimerParcialDB.produccion.tbEmprendimiento
 SELECT * FROM PrimerParcialDB.produccion.tbUbigeo
 
---Cuales son los emprendimientos del departamento de Amazonas
---y con población<10,000
---y mostrar mensaje [0-5000>: Población menor a 5000
---contrario, población entre 5000 y 10000
-select emp.ruc,
-       emp.razonsocial,
-	   ubi.departamento,
-	   ubi.provincia,
-	   ubi.distrito,
-	   ubi.poblacion,
-	   case when ubi.poblacion>=0 and ubi.poblacion<5000 then 'Población menor a 5000'
-	   else 'población entre 5000 y 10000' end as mensajepoblacion
+-- Cuales son los emprendimientos del departamento de Amazonas
+-- y con poblacion<10,000
+-- y mostrar mensaje [0-5000>: Poblacion menor a 5000
+-- contrario, poblacion entre 5000 y 10000
+select emp.ruc, emp.razonsocial, ubi.departamento, ubi.provincia, ubi.distrito, ubi.poblacion,
+	CASE WHEN ubi.poblacion>=0 AND ubi.poblacion<5000 THEN 'Poblacion menor a 5000'
+		ELSE 'poblacion entre 5000 y 10000' 
+	END as mensajepoblacion
 from PrimerParcialDB.produccion.tbEmprendimiento emp
 inner join PrimerParcialDB.produccion.tbUbigeo ubi
 on emp.idubigeo=ubi.id
 where ubi.departamento='AMAZONAS' and ubi.poblacion<10000
 order by ubi.poblacion desc
 
--- 3. Liste por cada calificación la valoración, fecha de valoración, comentario,
--- nombre de película de aquellas calificaciones>=3.
+-- 3. Liste por cada calificaciï¿½n la valoraciï¿½n, fecha de valoraciï¿½n, comentario,
+-- nombre de pelï¿½cula de aquellas calificaciones>=3.
 SELECT cal.valoracion, 
        cal.fecregistro, 
 	   ISNULL(cal.comentario, 'No ingreso comentario') as comentario,
@@ -97,7 +92,7 @@ ON cal.idpelicula = pel.idpelicula
 WHERE cal.valoracion  >= 3
 
 -- uso de LEFT OUTER JOIN
--- 4. Liste por cada usuario el alias, correo, estado y nombre de su país. NOTA: Los usuarios deben mostrarse así el país no se encuentra cargado
+-- 4. Liste por cada usuario el alias, correo, estado y nombre de su paï¿½s. NOTA: Los usuarios deben mostrarse asï¿½ el paï¿½s no se encuentra cargado
 -- siendo usuario la tabla principal de la consulta.
 SELECT usu. alias,usu.correo, usu.estado, pais.nombrepais
 FROM tbUsuario usu
@@ -107,9 +102,9 @@ SELECT * FROM tbUsuario
 SELECT * FROM tbpais
 
 -- uso de RIGHT OUTER JOIN
---5. Liste por cada país el id, nombre del país, así como el alias y correo de los
+--5. Liste por cada paï¿½s el id, nombre del paï¿½s, asï¿½ como el alias y correo de los
 --usuarios asociados.
---NOTA: Los países deben mostrarse así no existan usuarios asociados
+--NOTA: Los paï¿½ses deben mostrarse asï¿½ no existan usuarios asociados
 --siendo usuario la tabla principal de la consulta.
 SELECT usu.alias, usu.correo, pais.idpais, pais.nombrepais
 FROM tbUsuario usu
