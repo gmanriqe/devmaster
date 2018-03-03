@@ -176,3 +176,56 @@ WHERE variable='ESTADO_CONSTRUCCION'
 SELECT *
 FROM nasca.parametro
 WHERE variable='CIIU'
+
+-- 20180226
+
+select ficha,* from nasca.ficha
+where codsuministro='00101013201'
+
+-- Guardar con zona horaria, guardado con la zona del servidor.
+-- Lo recomendable es manejar con el tipo de dato con timestanp y luego convertir a tu zona horaria
+select fecregistro,fecregistro AT TIME ZONE 'america/lima' as fecregistrolocal from nasca.ficha
+
+-- 
+SELECT to_char(nasca.ficha.fecregistro, 'YYYYMMDD') as fecregistro, nasca.ficha.codencuestador as codenc, fecregistro,*
+from nasca.ficha 
+inner join nasca.responsable
+on nasca.ficha.id = nasca.responsable.id
+inner join nasca.unidad_uso
+on nasca.ficha.id = nasca.unidad_uso.idficha
+--WHERE manzana='0200'
+where to_char(nasca.ficha.fecregistro, 'YYYYMMDD')>='20180225' AND nasca.ficha.codencuestador='E03'
+--nasca.ficha.codencuestador='E03' --AND nasca.ficha.codencuestador IS NULL
+ORDER BY codenc
+
+--where nasca.ficha.codsuministro='00101087301'
+--where CONVERT(character varying(8), fecregistro,112) >= '20180220'
+
+-- CIIU NO LISTA (ADD 9500)
+insert into nasca.parametro(variable, valor, codigo)
+select 'CIIU','ACTIVIDADES DE ORGANIZACIONES POLITICAS','9492'
+insert into nasca.parametro(variable, valor, codigo)
+select 'CIIU','OTRAS ACTIVIDADES DEPORTIVAS','9319'
+
+-- select comuna,* from nasca.ficha_dev
+
+insert into nasca.ficha(sucursal,estado_conexion,codsuministro,distrito,sector,manzana,lote,conexion,sector_opera,subsector,tipo_habilitacion,nombre_habilitacion,manzana_mun,lote_mun,sublote_mun,tipo_poblacion,tipo_via,nombre_via,num_municipal,telefono,estado_servicio,tipo_servicio,referencias,tipo_construccion,estado_construccion,grupo_caracteristico,ciiu,quien_habita,num_familias,num_habitantes,estado_agua,categoria_agua,tipo_cobranza_medicion,macrosector_agua,sector_agua,multiusuario_agua,cantidad_predios,caja_registro,estado_caja_agua,acometida_tuberia,diametro_acometida,tapa,tipo_consumidor,pavimento,localizacion_conexion,ubicacion_metros,fuga,estado_tapa,estado_desague,categoria_desague,macrosector_desague,sector_desague,red_distribucion_desague,tipo_material_tuberia,diametro_tubo,tipo_caja,estado_caja,localizacion_caja,estado_obstruido,ubicacion_metros_desague,marca_medidor,num_medidor,lectura,diametro_medidor,estado_medidor,posicion_medidor,tipo_medidor,valvula,seguridad_medidor,vereda,pista,pozo_artesanal,tipo_almacenamiento,num_pisos,presion_agua,medidas_fachada,frec_horas_abastecimiento,frec_dias_abastecimiento,observaciones,codencuestador,fectrabajada,fila)
+select sucursal,estado_conexion,codsuministro,distrito,sector,manzana,lote,conexion,sector_opera,subsector,tipo_habilitacion,nombre_habilitacion,manzana_mun,lote_mun,sublote_mun,tipo_poblacion,tipo_via,nombre_via,num_municipal,telefono,estado_servicio,tipo_servicio,referencias,tipo_construccion,estado_construccion,grupo_caracteristico,ciiu,quien_habita,num_familias,num_habitantes,estado_agua,categoria_agua,tipo_cobranza_medicion,macrosector_agua,sector_agua,multiusuario_agua,cantidad_predios,caja_registro,estado_caja_agua,acometida_tuberia,diametro_acometida,tapa,tipo_consumidor,pavimento,localizacion_conexion,ubicacion_metros,fuga,estado_tapa,estado_desague,categoria_desague,macrosector_desague,sector_desague,red_distribucion_desague,tipo_material_tuberia,diametro_tubo,tipo_caja,estado_caja,localizacion_caja,estado_obstruido,ubicacion_metros_desague,marca_medidor,num_medidor,lectura,diametro_medidor,estado_medidor,posicion_medidor,tipo_medidor,valvula,seguridad_medidor,vereda,pista,pozo_artesanal,tipo_almacenamiento,num_pisos,presion_agua,medidas_fachada,frec_horas_abastecimiento,frec_dias_abastecimiento,observaciones,codencuestador,fectrabajada,fila
+from nasca.ficha_dev
+where codsuministro=''
+
+-- CREACION SECUENCIA
+CREATE SEQUENCE ficha_id_seq -- ficha=tabla -- id=campo
+-- ASIGNACION PARA UNA COLUMNA
+ALTER TABLE nasca.ficha ALTER COLUMN id SET DEFAULT nextval('ficha_id_seq');
+
+-- EL MAXIMO VALOR QUE YA ESTA TOMADO
+SELECT MAX(id) FROM nasca.ficha; -- 5762
+-- TODAS LAS INSERCIONES QUE PARTAN DESDE EL 5762
+SELECT setval('ficha_id_seq', 5762);  
+
+-- convertir la hora del servidor a la hora 'america/lima'
+select manzana, lote, fecregistro, codencuestador, fectrabajada AT TIME ZONE 'america/lima' as fecregistrolocal, * from nasca.ficha
+WHERE MANZANA='0300' 
+ORDER BY lote DESC
+
