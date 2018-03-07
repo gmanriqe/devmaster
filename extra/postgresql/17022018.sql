@@ -206,7 +206,18 @@ insert into nasca.parametro(variable, valor, codigo)
 select 'CIIU','ACTIVIDADES DE ORGANIZACIONES POLITICAS','9492'
 insert into nasca.parametro(variable, valor, codigo)
 select 'CIIU','OTRAS ACTIVIDADES DEPORTIVAS','9319'
-
+insert into nasca.parametro(variable, valor, codigo)
+select 'CIIU','ALMACENAMIENTO Y DEPOSITO','5210'
+insert into nasca.parametro(variable, valor, codigo)
+select 'CIIU','OTROS TIPOS DE INTERMEDIACION MONETARIA','6419'
+INSERT INTO nasca.parametro(variable,valor,codigo)
+select 'CIIU','ACTIVIDADES DE FOTOGRAFIA','7420'
+INSERT INTO NASCA.PARAMETRO(VARIABLE, VALOR, CODIGO)
+SELECT 'CIIU','ACTIVIDADES DE OFICINAS PRINCIPALES','7010'
+insert into nasca.parametro(variable,valor,codigo)
+select 'CIIU','ACTIVIDADES POSTALES','5310'
+insert into nasca.parametro(variable,valor,codigo)
+select 'CIIU','VENTA AL POR MENOR DE PRODUCTOS CULTURALES Y RECREATIVOS EN COMERCIOS ESPECIALIZADOS','476'
 -- select comuna,* from nasca.ficha_dev
 
 insert into nasca.ficha(sucursal,estado_conexion,codsuministro,distrito,sector,manzana,lote,conexion,sector_opera,subsector,tipo_habilitacion,nombre_habilitacion,manzana_mun,lote_mun,sublote_mun,tipo_poblacion,tipo_via,nombre_via,num_municipal,telefono,estado_servicio,tipo_servicio,referencias,tipo_construccion,estado_construccion,grupo_caracteristico,ciiu,quien_habita,num_familias,num_habitantes,estado_agua,categoria_agua,tipo_cobranza_medicion,macrosector_agua,sector_agua,multiusuario_agua,cantidad_predios,caja_registro,estado_caja_agua,acometida_tuberia,diametro_acometida,tapa,tipo_consumidor,pavimento,localizacion_conexion,ubicacion_metros,fuga,estado_tapa,estado_desague,categoria_desague,macrosector_desague,sector_desague,red_distribucion_desague,tipo_material_tuberia,diametro_tubo,tipo_caja,estado_caja,localizacion_caja,estado_obstruido,ubicacion_metros_desague,marca_medidor,num_medidor,lectura,diametro_medidor,estado_medidor,posicion_medidor,tipo_medidor,valvula,seguridad_medidor,vereda,pista,pozo_artesanal,tipo_almacenamiento,num_pisos,presion_agua,medidas_fachada,frec_horas_abastecimiento,frec_dias_abastecimiento,observaciones,codencuestador,fectrabajada,fila)
@@ -224,8 +235,33 @@ SELECT MAX(id) FROM nasca.ficha; -- 5762
 -- TODAS LAS INSERCIONES QUE PARTAN DESDE EL 5762
 SELECT setval('ficha_id_seq', 5762);  
 
--- convertir la hora del servidor a la hora 'america/lima'
+-- CONVERTIR LA HORA DEL SERVIDOR EN HORA LOCAL 'america/lima'
 select manzana, lote, fecregistro, codencuestador, fectrabajada AT TIME ZONE 'america/lima' as fecregistrolocal, * from nasca.ficha
 WHERE MANZANA='0300' 
 ORDER BY lote DESC
 
+-- AGRUPAR Y CONTAR
+select codencuestador, COUNT(1) as conencuestador
+from nasca.ficha
+where manzana='0250' AND codencuestador is not null
+group by codencuestador
+
+-- CUANTAS FICHAS CREADAS POR LOTE
+select codencuestador, lote, COUNT(*) as contador
+from nasca.ficha
+where manzana='0250' AND codencuestador is not null
+group by codencuestador, lote
+order by lote
+
+-- VACIAR UNA TABLAR (BORRA LA TABLA Y LA VUELVE A CREAR VACIA)
+truncate table nasca.ficha_dev
+
+-- CHANGE ROL USER
+update nasca.usuario -- CHANGE SUPERVISOR TO 
+set tipo='E'
+where id=15
+
+-- INSERT USER
+-- https://www.browserling.com/tools/bcrypt (bcrypt)
+insert into nasca.usuario(codigo,contraseña,nombres,apellido_pat,apellido_mat, tipo,color)
+select 'E10','$2a$10$y05NL54v6OG6Qms4ZizLN.gx1d5OsmlXHpWnVdBXkQvfOjAaBFD2a','Juny Antuane','Ancase','Munarriz','E','f6ab4a'
