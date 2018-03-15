@@ -218,6 +218,8 @@ insert into nasca.parametro(variable,valor,codigo)
 select 'CIIU','ACTIVIDADES POSTALES','5310'
 insert into nasca.parametro(variable,valor,codigo)
 select 'CIIU','VENTA AL POR MENOR DE PRODUCTOS CULTURALES Y RECREATIVOS EN COMERCIOS ESPECIALIZADOS','476'
+insert into nasca.parametro(variable,valor,codigo)
+select 'CIIU','ACTIVIDADES DE HOSPITALES','8610'
 -- select comuna,* from nasca.ficha_dev
 
 insert into nasca.ficha(sucursal,estado_conexion,codsuministro,distrito,sector,manzana,lote,conexion,sector_opera,subsector,tipo_habilitacion,nombre_habilitacion,manzana_mun,lote_mun,sublote_mun,tipo_poblacion,tipo_via,nombre_via,num_municipal,telefono,estado_servicio,tipo_servicio,referencias,tipo_construccion,estado_construccion,grupo_caracteristico,ciiu,quien_habita,num_familias,num_habitantes,estado_agua,categoria_agua,tipo_cobranza_medicion,macrosector_agua,sector_agua,multiusuario_agua,cantidad_predios,caja_registro,estado_caja_agua,acometida_tuberia,diametro_acometida,tapa,tipo_consumidor,pavimento,localizacion_conexion,ubicacion_metros,fuga,estado_tapa,estado_desague,categoria_desague,macrosector_desague,sector_desague,red_distribucion_desague,tipo_material_tuberia,diametro_tubo,tipo_caja,estado_caja,localizacion_caja,estado_obstruido,ubicacion_metros_desague,marca_medidor,num_medidor,lectura,diametro_medidor,estado_medidor,posicion_medidor,tipo_medidor,valvula,seguridad_medidor,vereda,pista,pozo_artesanal,tipo_almacenamiento,num_pisos,presion_agua,medidas_fachada,frec_horas_abastecimiento,frec_dias_abastecimiento,observaciones,codencuestador,fectrabajada,fila)
@@ -265,3 +267,20 @@ where id=15
 -- https://www.browserling.com/tools/bcrypt (bcrypt)
 insert into nasca.usuario(codigo,contraseña,nombres,apellido_pat,apellido_mat, tipo,color)
 select 'E10','$2a$10$y05NL54v6OG6Qms4ZizLN.gx1d5OsmlXHpWnVdBXkQvfOjAaBFD2a','Juny Antuane','Ancase','Munarriz','E','f6ab4a'
+
+-- CONSULTA SECTOR_2 PADRON-AYUDA
+select mz, 
+lt, 
+case
+	when (char_length(suministro)=7) then '0010'||''||suministro
+end as suministro, 
+codcat as codcatastral,
+nombres, 
+tipo_via ||' '|| nombre_via ||' '|| num_via as direccion,
+case
+	when(identificacion=0) then '-'
+end as idenficacion,
+facturacion
+from sector2.padron
+where mz=365
+order by lt asc
