@@ -227,10 +227,14 @@ select sucursal,estado_conexion,codsuministro,distrito,sector,manzana,lote,conex
 from nasca.ficha_dev
 where codsuministro=''
 
--- CREACION SECUENCIA
+-- CREACION SECUENCIA (OTRA OPCION ES SERIAL AVERIGUAR)
 CREATE SEQUENCE ficha_id_seq -- ficha=tabla -- id=campo
 -- ASIGNACION PARA UNA COLUMNA
 ALTER TABLE nasca.ficha ALTER COLUMN id SET DEFAULT nextval('ficha_id_seq');
+
+-- HACIENDO USO DE SERIAL
+alter table nombretabla add column nombrecolumna serial primary key not null;
+
 
 -- EL MAXIMO VALOR QUE YA ESTA TOMADO
 SELECT MAX(id) FROM nasca.ficha; -- 5762
@@ -284,3 +288,42 @@ facturacion
 from sector2.padron
 where mz=365
 order by lt asc
+
+
+-- QUE FILA NOS FALTA
+select min(fila) from nasca.ficha
+select max(fila) from nasca.ficha
+
+select min(fila+1) as fila_c from nasca.ficha where fila+1 not in (select fila from nasca.ficha where fila is not null)
+
+-- PADRON SECTOR 02 SAN CARLOS
+
+select 
+CASE
+	WHEN estado='ACTIVA' THEN 'REAL'
+	WHEN estado='CLANDESTINO' THEN 'CLANDESTINO'
+END AS ESTADO,
+CASE
+	WHEN (char_length(suministro)=7) THEN '0010'||''||suministro
+END AS suministro,
+distrito, sector, manzana, lote, conexion,facturacion, sector_operacional, sub_operacional, nombres, identificacion, conyuge, tipo_habilitacion, nombre_habilitacion, manzana_municipal, lote_municipal, tipo_via, nombre_via, numero_municipal, situacion, tipo_servicio, complemento,tipo_predio,estado_construccion,ciiu,quien_habita,num_familia,num_habitantes, tipo_uso,hab_deshab,uso_predio,marca_medidor,num_medidor,lectura_medidor,diametro_medidor,estado_medidor,posicion_medidor,tipo_medidor,llaves_paso_medidor,seguridad_medidor,condicion_conexion_agua, material_caja_agua, estado_caja_agua, material_conexion_agua, diametro_conexion_agua, material_tapa_agua, ubicación_conexion_agua, fuga_agua, estado_tapa_agua,ubicacion_metros_agua, responsable_uso, tipo_uso, complemento_uso, condicion_conexion_desague, material_conexion_desague, diametro_conexion_desague, material_conexion_desague, estado_caja_desague,ubicación_conexion_desague,tapa_desague, estado_tapa_desague, atoro,ubicacion_metros_desague,vereda,pavimento, pozo_artesanal, tipo_almacenamiento, pisos, medida_facha,horas_frecuencia,dias_frecuencia,argumento_complementario from sector 
+where manzana='295'
+order by lote asc
+
+
+-- PADRON SECTOR 03 VISTA ALEGRE
+
+
+select 
+CASE
+	WHEN estado='ACTIVA' THEN 'REAL'
+	WHEN estado='CLANDESTINO' THEN 'CLANDESTINO'
+	WHEN estado='FACTIBLE' THEN 'FACTIBLE'
+END AS ESTADO,
+CASE
+	WHEN (char_length(suministro)=8) THEN '005'||''||suministro
+	WHEN (char_length(suministro)=0) THEN '-'
+END AS suministro,
+distrito, sector, manzana, lote, conexion,facturacion, sector_operacional, sub_operacional, nombres, identificacion, conyuge, tipo_habilitacion, nombre_habilitacion, manzana_municipal, lote_municipal, tipo_via, nombre_via, numero_municipal, situacion, tipo_servicio, complemento,tipo_predio,estado_construccion,ciiu,quien_habita,num_familia,num_habitantes, tipo_uso,hab_deshab,uso_predio,marca_medidor,num_medidor,lectura_medidor,diametro_medidor,estado_medidor,posicion_medidor,tipo_medidor,llaves_paso_medidor,seguridad_medidor,condicion_conexion_agua, material_caja_agua, estado_caja_agua, material_conexion_agua, diametro_conexion_agua, material_tapa_agua, ubicación_conexion_agua, fuga_agua, estado_tapa_agua,ubicacion_metros_agua, responsable_uso, tipo_uso, complemento_uso, condicion_conexion_desague, material_conexion_desague, diametro_conexion_desague, material_conexion_desague, estado_caja_desague,ubicación_conexion_desague,tapa_desague, estado_tapa_desague, atoro,ubicacion_metros_desague,vereda,pavimento, pozo_artesanal, tipo_almacenamiento, pisos, medida_facha,horas_frecuencia,dias_frecuencia,argumento_complementario from sectorva 
+where manzana='125'
+order by lote asc

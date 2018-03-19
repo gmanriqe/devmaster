@@ -4852,6 +4852,22 @@ set idficha= f.id
 from nasca.ficha f
 where u.fila= f.fila 
 
+-- verificacion de cuantas filas tenemos por ficha
+select u.idficha, u.fila, count(u.fila)
+from nasca.ficha f
+inner join nasca.unidad_uso_desarrollo u
+on f.id = u.idficha
+group by u.idficha, u.fila
+order by u.fila asc
+
+-- verificando un id de ficha cualquiera
+select u.idficha, u.fila 
+from nasca.ficha f
+inner join nasca.unidad_uso_desarrollo u
+on f.id = u.idficha
+where f.id = 6935
+order by u.fila asc
+
 --Cargar de unidad_uso_desarrollo a unidad_uso -- Solo los que tienen responsable diferente a vacio
 insert into nasca.unidad_uso(responsable,tipo_uso,categoria,complemento,idficha)
 select responsable,tipo_uso,categoria,complemento,idficha
