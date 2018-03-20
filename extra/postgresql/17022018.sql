@@ -312,8 +312,6 @@ order by lote asc
 
 
 -- PADRON SECTOR 03 VISTA ALEGRE
-
-
 select 
 CASE
 	WHEN estado='ACTIVA' THEN 'REAL'
@@ -327,3 +325,39 @@ END AS suministro,
 distrito, sector, manzana, lote, conexion,facturacion, sector_operacional, sub_operacional, nombres, identificacion, conyuge, tipo_habilitacion, nombre_habilitacion, manzana_municipal, lote_municipal, tipo_via, nombre_via, numero_municipal, situacion, tipo_servicio, complemento,tipo_predio,estado_construccion,ciiu,quien_habita,num_familia,num_habitantes, tipo_uso,hab_deshab,uso_predio,marca_medidor,num_medidor,lectura_medidor,diametro_medidor,estado_medidor,posicion_medidor,tipo_medidor,llaves_paso_medidor,seguridad_medidor,condicion_conexion_agua, material_caja_agua, estado_caja_agua, material_conexion_agua, diametro_conexion_agua, material_tapa_agua, ubicación_conexion_agua, fuga_agua, estado_tapa_agua,ubicacion_metros_agua, responsable_uso, tipo_uso, complemento_uso, condicion_conexion_desague, material_conexion_desague, diametro_conexion_desague, material_conexion_desague, estado_caja_desague,ubicación_conexion_desague,tapa_desague, estado_tapa_desague, atoro,ubicacion_metros_desague,vereda,pavimento, pozo_artesanal, tipo_almacenamiento, pisos, medida_facha,horas_frecuencia,dias_frecuencia,argumento_complementario from sectorva 
 where manzana='125'
 order by lote asc
+
+-- PADRON SECTOR 03 VISTA ALEGRE -- RESUMEN
+select 
+CASE
+	WHEN estado='ACTIVA' THEN 'REAL'
+	WHEN estado='CLANDESTINO' THEN 'CLAND.'
+	WHEN estado='FACTIBLE' THEN 'FACT.'
+END AS ESTADO,
+CASE
+	WHEN (char_length(suministro)=8) THEN '005'||''||suministro
+	WHEN (char_length(suministro)=0) THEN '-'
+END AS suministro,
+CASE
+	WHEN (char_length(manzana)=3) THEN '0'||manzana
+END AS manzana, 
+CASE
+	WHEN (char_length(lote)=2) THEN '00'||lote 
+	WHEN (char_length(lote)=3) THEN '0'||lote 
+END AS lote, 
+
+cod_catastral,
+nombres, 
+tipo_habilitacion||' '||nombre_habilitacion as nombre_habilitacion, 
+tipo_via||' '||nombre_via||' '||numero_municipal as nombre_via,
+facturacion
+from sectorva 
+where manzana='548'
+order by lote asc
+
+
+-- OBTENIENDO VALORES REPETIDOS 
+select valor, codigo, count(*) 
+from NASCA.parametro
+where variable='MANZANA'
+group by valor, codigo
+having count(*) > 1
