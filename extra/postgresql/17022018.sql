@@ -361,3 +361,22 @@ from NASCA.parametro
 where variable='MANZANA'
 group by valor, codigo
 having count(*) > 1
+
+
+select codencuestador,estado_conexion, codsuministro, manzana, lote, * from nasca.ficha
+where manzana='0620' and sector='01'
+order by lote asc
+
+select codencuestador,manzana, count(lote) from nasca.ficha
+where manzana='0855' and sector='01'
+group by codencuestador, manzana
+
+
+-- REPORTE LISBETH SECTOR 01
+select * from nasca.ficha f
+inner join nasca.unidad_uso u
+on f.id = u.idficha
+inner join nasca.responsable r
+on f.id = r.idficha
+where f.estado_conexion is not null and f.sector='01'
+order by f.manzana, f.lote asc

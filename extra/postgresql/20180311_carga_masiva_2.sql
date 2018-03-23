@@ -352,7 +352,6 @@ select * from nasca.responsable order by idficha
 -- QUE FILA NOS FALTA
 select min(fila) from nasca.ficha
 select max(fila) from nasca.ficha
-
 select min(fila+1) as fila_c from nasca.ficha where fila+1 not in (select fila from nasca.ficha where fila is not null)
 
 
