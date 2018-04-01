@@ -380,3 +380,69 @@ inner join nasca.responsable r
 on f.id = r.idficha
 where f.estado_conexion is not null and f.sector='01'
 order by f.manzana, f.lote asc
+
+
+-- ACTUALIZAR CAMPO COMUNA A UNA MANZANA ASIGNADA
+update nasca.ficha
+set comuna='CU. CERCADO_NASCA'
+where manzana='0845' and sector='01'
+
+
+
+-- URBANA
+update nasca.ficha
+set tipo_poblacion='URBANA'
+where manzana='0997' and SECTOR='01'
+
+-- COLUMNA Y FILA
+update nasca.ficha
+set ubicacion_conexion_fila=0 ,ubicacion_conexion_columna=0
+where manzana='0565' and SECTOR='01'
+
+-- *** PROPIETARIO ***
+select * from nasca.responsable
+where idficha='4761'
+
+-- *** RESPONSABLE ***
+select * from nasca.responsable
+where idficha in (
+'1531',
+'1531',
+'1530',
+'1529',
+'1528',
+'1527',
+'1526',
+'1525',
+'1524',
+'1535',
+'1534',
+'1533',
+'1532')
+order by idficha asc
+
+
+-- *** UNIDAD_USO ***
+select * from nasca.unidad_uso
+where idficha in (
+'1500',
+'1499',
+'1498',
+'1497',
+'1496',
+'1495',
+'1494',
+'1493',
+'1492',
+'1491',
+'1490',
+'1489',
+'1488',
+'1487',
+'1486',
+'1485',
+'1484',
+'1483',
+'1482',
+'1481')
+order by idficha asc
