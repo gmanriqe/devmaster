@@ -52,7 +52,7 @@ where manzana='0575' and sector='01'
 order by lote asc
 
 select * from nasca.ficha
-where estado_conexion='REAL' and 
+where estado_conexion='REAL' and codsuministro<>''
 
 -- NUEVAS MANZANAS
 insert into nasca.parametro(variable, valor, codigo)
