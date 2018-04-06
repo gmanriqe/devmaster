@@ -47,6 +47,12 @@ on f.codsuministro = p.codsuministro
 where (p.sub_categoria like '%DOMESTICO%' <> f.categoria_agua like '%DOMESTICO%') and p.urbanizacion='NASCA - APV AMAPROVI'
 order by f.manzana asc
 
+-- SUMINISTROS TOCADOS
+select p.urbanizacion,*
+from nasca.ficha f
+inner join nasca.padroncg p
+on f.codsuministro = p.codsuministro
+where p.urbanizacion='NASCA - APV AMAPROVI' and estado_conexion <> ''
 
 -- SUMINISTROS AUN NO TOCADOS -- TOTAL 49
 select 
