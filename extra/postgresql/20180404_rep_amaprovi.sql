@@ -106,3 +106,37 @@ on f.codsuministro = p.codsuministro
 --where p.urbanizacion='NASCA - APV AMAPROVI' and f.estado_conexion is null --<>'' 
 where p.urbanizacion='NASCA - APV AMAPROVI' and estado_conexion <> '' --and r.tipo_resp='R'
 order by f.manzana asc
+
+
+-- CAMBIOS DE CATEGORIA POR HABILITACION
+select 
+p.codsuministro as suministro_padron, 
+p.nombres as nombre_padron, 
+--r.nombres ||' '||r.apellido_pat as nombres,
+f.tipo_via||' '||f.nombre_via ||' '|| f.num_municipal as nombre_via_ficha, -- ficha 
+f.tipo_habilitacion||' '||f.nombre_habilitacion as nombre_habilitacion_ficha, -- ficha
+
+f.categoria_agua as categoria_agua_ficha, -- ficha
+f.categoria_desague as categoria_desague_ficha, --ficha
+p.sub_categoria as sub_categoria_padron, -- padron
+
+f.tipo_servicio as tipo_servicio_ficha, -- ficha
+p.tipo_servicio as tipo_servicio_padron, -- padron
+p.estado_servicio as estado_servicio_padron, --padron
+
+p.estado_agua as estado_agua_padron, -- padron
+f.estado_agua as estado_agua_ficha, -- ficha
+
+p.estado_desague as estado_desague_padron -- padron
+from nasca.ficha f
+inner join nasca.padroncg p
+on f.codsuministro = p.codsuministro
+--where p.urbanizacion='NASCA - APV AMAPROVI' and f.estado_conexion is null --<>'' 
+--where p.urbanizacion='NASCA - APV AMAPROVI' and estado_conexion <> '' --and r.tipo_resp='R'
+where (p.urbanizacion='NASCA - APV AMAPROVI') and
+	  (p.sub_categoria like '%DOMESTICO%' <> f.categoria_agua like '%DOMESTICO%' or
+	  p.sub_categoria like '%COMERCIAL%' <> f.categoria_agua like '%COMERCIAL%' or 
+	  p.sub_categoria like '%ESTATAL%' <> f.categoria_agua like '%ESTATAL%' or
+	  p.sub_categoria like '%INDUSTRIAL%' <> f.categoria_agua like '%INDUSTRIAL%' or
+	  p.sub_categoria like '%SOCIAL%' <> f.categoria_agua like '%SOCIAL%') 
+order by f.manzana asc
