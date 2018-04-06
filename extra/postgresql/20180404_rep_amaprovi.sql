@@ -140,3 +140,5 @@ where (p.urbanizacion='NASCA - APV AMAPROVI') and
 	  p.sub_categoria like '%INDUSTRIAL%' <> f.categoria_agua like '%INDUSTRIAL%' or
 	  p.sub_categoria like '%SOCIAL%' <> f.categoria_agua like '%SOCIAL%') 
 order by f.manzana asc
+
+-- ALVARO NO SEAS SAPO
