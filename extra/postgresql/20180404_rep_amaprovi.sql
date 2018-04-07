@@ -142,3 +142,35 @@ where (p.urbanizacion='NASCA - APV AMAPROVI') and
 order by f.manzana asc
 
 -- ALVARO NO SEAS SAPO
+-- VERIFICACION DE HABILITACION, SECTOR_OPERA Y SUB_OPERA
+select count(*) from nasca.ficha
+where manzana in (
+'0875',
+'0880',
+'0881',
+'0883',
+'0885',
+'0890',
+'0895',
+'0900',
+'0905',
+'0910',
+'0965',
+'0970',
+'0975',
+'0980',
+'0985',
+'0986',
+'0987',
+'0988',
+'0989',
+'0990',
+'0991',
+'0992',
+'0993',
+'0994',
+'0995',
+'0996',
+'0997',
+'0998',
+'0999') and sector_opera='01' and subsector='001'
