@@ -174,3 +174,11 @@ where manzana in (
 '0997',
 '0998',
 '0999') and sector_opera='01' and subsector='001'
+
+
+-- ELIMINACION DE REGISTROS SIN CODIGO SUMINISTRO (NO FUERON LLENADOS CORRECTAMENTE)
+delete from nasca.ficha
+where id in (
+select id from nasca.ficha
+where manzana='0365' and sector='01' and codencuestador is null-- and codencuestador='E16'
+)
