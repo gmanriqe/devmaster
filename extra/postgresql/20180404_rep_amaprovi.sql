@@ -281,12 +281,17 @@ fuga=null,
 fectrabajada=null
 where id='5825'
 
-
 select * from nasca.responsable
 where idficha='2725'
 
 select * from nasca.unidad_uso
 where idficha='2725'
 
-
 -- **** fin (PROPIETARIO ASIGNADO INCORRECTAMENTE) ****
+
+-- UPDATE TIPO_HABILITACION, NOMBRE_HABILITACION, SUBSECTOR AND SECTOR_OPERA
+update nasca.ficha
+set tipo_habilitacion='URB.', nombre_habilitacion='LOS_JARDINES', subsector='003', sector_opera='01'
+where manzana='0245' and sector='01'
+
+-- **** fin (UPDATE TIPO_HABILITACION, NOMBRE_HABILITACION, SUBSECTOR AND SECTOR_OPERA) ****
