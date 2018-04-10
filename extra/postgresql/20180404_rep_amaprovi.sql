@@ -280,3 +280,13 @@ estado_obstruido=null,
 fuga=null,
 fectrabajada=null
 where id='5825'
+
+
+select * from nasca.responsable
+where idficha='2725'
+
+select * from nasca.unidad_uso
+where idficha='2725'
+
+
+-- **** fin (PROPIETARIO ASIGNADO INCORRECTAMENTE) ****
