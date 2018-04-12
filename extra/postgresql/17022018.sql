@@ -450,3 +450,8 @@ order by idficha asc
 -- ** SEARCH FOR MEASURE AND REFERENCE
 select * from nasca.ficha
 where ubicacion_metros_desague='1.64' and medidas_fachada='9.15' and referencias like '%COLOR AMARILLO%'
+
+-- ** UPDATE TIPO_HABILITACION, NOMBRE_HABILITACIO, SUBSECTOR, SECTOR
+update nasca.ficha
+set tipo_habilitacion='URB.', nombre_habilitacion='LOS_JARDINES', subsector='003', sector_opera='01'
+where manzana='0400' and sector='01'-- and codencuestador is null and codsuministro is null
