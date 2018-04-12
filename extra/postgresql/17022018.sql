@@ -446,3 +446,7 @@ where idficha in (
 '1482',
 '1481')
 order by idficha asc
+
+-- ** SEARCH FOR MEASURE AND REFERENCE
+select * from nasca.ficha
+where ubicacion_metros_desague='1.64' and medidas_fachada='9.15' and referencias like '%COLOR AMARILLO%'
