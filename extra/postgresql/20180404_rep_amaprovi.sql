@@ -295,3 +295,27 @@ set tipo_habilitacion='URB.', nombre_habilitacion='LOS_JARDINES', subsector='003
 where manzana='0245' and sector='01'
 
 -- **** fin (UPDATE TIPO_HABILITACION, NOMBRE_HABILITACION, SUBSECTOR AND SECTOR_OPERA) ****
+
+-- ONLY SERVICE DRAIN 'D'. VALUES WATER SET NULL 
+update nasca.ficha
+set estado_agua=null, --
+categoria_agua=null, --
+tipo_cobranza_medicion=null, --
+macrosector_agua=null, --
+sector_agua=null, --
+cantidad_predios=null, --
+tipo_consumidor=null, --
+caja_registro=null, --
+estado_caja_agua=null, --
+acometida_tuberia=null, --
+diametro_acometida=null, --
+tapa=null, --
+pavimento=null, --
+localizacion_conexion=null, --
+ubicacion_metros=null,--
+estado_tapa=null, --
+multiusuario_agua=null, --
+fuga=null
+where id='13216'
+
+-- **** END (ONLY SERVICE DRAIN 'D'. VALUES WATER SET NULL ) ****
