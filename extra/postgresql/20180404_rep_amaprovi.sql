@@ -79,6 +79,24 @@ on f.codsuministro = p.codsuministro
 where p.urbanizacion='NASCA - APV AMAPROVI' and f.estado_conexion is null  
 order by f.manzana asc
 
+-- PADRON PARA BUSQUEDA DE CLIENTES AUN NO ENCONTRADOS EN CAMPO
+-- SUMINISTROS AUN NO TOCADOS -- TOTAL 49
+select 
+p.urbanizacion as nombre_habilitacion, 
+p.nombre_via as nombre_via,
+--p.sub_categoria as categoria,
+p.nombres as nombre, 
+p.codsuministro as suministro_padron, 
+f.estado_conexion, 
+f.conexion, 
+f.codencuestador
+from nasca.ficha f
+inner join nasca.padroncg p
+on f.codsuministro = p.codsuministro
+where p.urbanizacion='NASCA - APV AMAPROVI' and f.estado_conexion is null  
+order by f.manzana asc
+
+
 -- SUMINISTROS ENCONTRADOS AMAPROVI
 select 
 p.codsuministro as suministro_padron, 
