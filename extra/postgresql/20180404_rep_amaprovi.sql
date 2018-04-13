@@ -79,8 +79,7 @@ on f.codsuministro = p.codsuministro
 where p.urbanizacion='NASCA - APV AMAPROVI' and f.estado_conexion is null  
 order by f.manzana asc
 
--- PADRON PARA BUSQUEDA DE CLIENTES AUN NO ENCONTRADOS EN CAMPO
--- SUMINISTROS AUN NO TOCADOS -- TOTAL 49
+-- PADRON PARA BUSQUEDA DE CLIENTES AUN NO ENCONTRADOS EN CAMPO (SUMINISTROS AUN NO TOCADOS -- TOTAL 49)
 select 
 p.urbanizacion as nombre_habilitacion, 
 p.nombre_via as nombre_via,
