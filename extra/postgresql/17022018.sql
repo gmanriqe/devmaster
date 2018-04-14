@@ -247,7 +247,7 @@ WHERE MANZANA='0300'
 ORDER BY lote DESC
 
 -- AGRUPAR Y CONTAR
-select codencuestador, COUNT(1) as conencuestador
+select codencuestador, COUNT(1) as total_fichas
 from nasca.ficha
 where manzana='0250' AND codencuestador is not null
 group by codencuestador
@@ -459,3 +459,9 @@ update nasca.ficha
 set tipo_habilitacion='URB.', nombre_habilitacion='LOS_JARDINES', subsector='003', sector_opera='01'
 where manzana='0400' and sector='01'-- and codencuestador is null and codsuministro is null
 
+
+-- ** COUNT FOR LOTE
+select codencuestador,lote, count(lote) from nasca.ficha
+where manzana='0335' and sector='02' 
+group by codencuestador, lote
+order by lote asc
