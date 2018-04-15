@@ -465,3 +465,44 @@ select codencuestador,lote, count(lote) from nasca.ficha
 where manzana='0335' and sector='02' 
 group by codencuestador, lote
 order by lote asc
+
+-- ** UPDATEN TIPO_HABILITACION, NOMBRE_HABILITACION, SUBSECTOR, SECTOR_OPERA, DISTRITO, SUCURSAL 
+
+update nasca.ficha
+set tipo_habilitacion='URB.', 
+nombre_habilitacion='AMAPROVI',  
+subsector='001', 
+sector_opera='01', 
+distrito='01', 
+sucursal='01'
+where manzana in (
+'0875',
+'0880',
+'0881',
+'0883',
+'0885',
+'0890',
+'0895',
+'0900',
+'0905',
+'0910',
+'0965',
+'0970',
+'0975',
+'0980',
+'0985',
+'0986',
+'0987',
+'0988',
+'0989',
+'0990',
+'0991',
+'0992',
+'0993',
+'0994',
+'0995',
+'0996',
+'0997',
+'0998',
+'0999'
+)
