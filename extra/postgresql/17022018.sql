@@ -466,7 +466,7 @@ where manzana='0335' and sector='02'
 group by codencuestador, lote
 order by lote asc
 
--- ** UPDATEN TIPO_HABILITACION, NOMBRE_HABILITACION, SUBSECTOR, SECTOR_OPERA, DISTRITO, SUCURSAL 
+-- ** UPDATE TIPO_HABILITACION, NOMBRE_HABILITACION, SUBSECTOR, SECTOR_OPERA, DISTRITO, SUCURSAL 
 
 update nasca.ficha
 set tipo_habilitacion='URB.', 
@@ -505,4 +505,4 @@ where manzana in (
 '0997',
 '0998',
 '0999'
-)
+) and sector='01'
