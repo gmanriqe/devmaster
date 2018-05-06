@@ -379,4 +379,22 @@ multiusuario_agua=null, --
 fuga=null
 where id='13216'
 
--- **** END (ONLY SERVICE DRAIN 'D'. VALUES WATER SET NULL ) ****
+-- **** END (ONLY SERVICE DRAIN 'D'. VALUES WATER SET NULL) ****
+
+-- ONLY SERVICE WATER (A). VALUES DRAIN SET NULL
+update nasca.ficha
+set estado_desague=null,
+categoria_desague=null, 
+macrosector_desague=null,
+sector_desague=null,
+red_distribucion_desague=null,
+tipo_material_tuberia=null,
+diametro_tubo=null,
+tipo_caja=null, 
+estado_caja=null,
+localizacion_caja=null,
+obstruido=null,
+ubicacion_metros_desague=null
+where id='97'
+
+-- **** END (ONLY SERVICE WATER (A). VALUES DRAIN SET NULL) ****

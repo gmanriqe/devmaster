@@ -5,15 +5,15 @@
 -- ************************************************
 -- SECTOR 01
 -- ************************************************
--- URB. AMAPROVI -- NASCA - APV AMAPROVI
--- URB. ASOCIACION_JOSE_CARLOS_MARIATEGUI -- NASCA -  JOSE  CARLOS MARIATEGI
--- CU. CERCADO_NASCA -- NASCA - URB CASCO URBANO
--- URB. FONAVI -- NASCA - URB CASCO URBANO
--- URB. LOS_JARDINES -- NASCA - PJ LOS JARDINES
--- URB. SAN_MAURICIO --  NASCA - URB SAN MAURICIO
--- URB. SANTA_ISABEL -- NASCA - URB SANTA ISABEL
--- URB. CARCELEN -- FUNDO CARCELEN - CUADROS
--- AAHH. UNION_VICTORIA -- NASCA - PJ UNION VICTORIA
+-- URB. AMAPROVI -- NASCA - APV AMAPROVI *
+-- URB. ASOCIACION_JOSE_CARLOS_MARIATEGUI -- NASCA -  JOSE  CARLOS MARIATEGI *
+-- CU. CERCADO_NASCA -- NASCA - URB CASCO URBANO *
+-- URB. FONAVI -- NASCA - URB CASCO URBANO  (FALTA HACER CRUCE FONAVI) NO ENCUENTRO HABILITACION CORRESPONDIENTE
+-- URB. LOS_JARDINES -- NASCA - PJ LOS JARDINES *
+-- URB. SAN_MAURICIO --  NASCA - URB SAN MAURICIO *
+-- URB. SANTA_ISABEL -- NASCA - URB SANTA ISABEL *
+-- URB. CARCELEN -- FUNDO CARCELEN - CUADROS *
+-- AAHH. UNION_VICTORIA -- NASCA - PJ UNION VICTORIA *
 
 -- *** 1.CLANDESTINA ***
 -- *********************
@@ -22,6 +22,9 @@ select
 '11'||'03'||f.distrito||f.sector||f.manzana||f.lote||f.conexion  as codigo_catastral_concatenado,
 coalesce(r.nombres||' '|| r.apellido_pat||' '||r.apellido_mat) as nombre,
 f.tipo_via||' '||f.nombre_via as direccion,
+f.num_municipal,
+f.manzana_mun,
+f.lote_mun,
 f.tipo_habilitacion||' '||f.nombre_habilitacion as habilitacion,
 -- CATEGORIA ANTERIOR NO EXISTE
 f.categoria_agua,
@@ -52,19 +55,24 @@ order by direccion asc
 
 -- *** 2.CAMBIOS DE TARIFA ( CATEGORIA ) ***
 -- *****************************************
-
 select 
 '11'||'03'||f.distrito||f.sector||f.manzana||f.lote||f.conexion  as codigo_catastral_concatenado,
 f.codencuestador,
-
 p.codsuministro as suministro_padron, 
 r.nombres ||' '||r.apellido_pat as nombres,
-f.tipo_via||' '||f.nombre_via ||' '|| f.num_municipal as nombre_via_ficha, -- ficha 
+
+f.tipo_via||' '||f.nombre_via as nombre_via_ficha, -- ficha 
+f.num_municipal,
+f.manzana_mun,
+f.lote_mun,
+
 f.tipo_habilitacion||' '||f.nombre_habilitacion as nombre_habilitacion_ficha, -- ficha
 
 f.categoria_agua as categoria_agua_ficha, -- ficha
 f.categoria_desague as categoria_desague_ficha, --ficha
 p.sub_categoria as sub_categoria_padron, -- padron
+
+f.estado_construccion,
 
 f.grupo_caracteristico
 from nasca.ficha f
@@ -86,6 +94,7 @@ where (p.urbanizacion='NASCA - APV AMAPROVI') and
 	  estado_conexion <> ''
 order by f.manzana asc
 
+
 -- *** 3. UNIDADES DE USO ***
 -- **************************
 
@@ -99,8 +108,7 @@ f.tipo_habilitacion||' '||f.nombre_habilitacion as habilitacion,
 f.categoria_agua as categoria_agua,
 f.categoria_desague as categoria_desague,
 f.grupo_caracteristico,
-f.observaciones,
-* 
+f.observaciones
 from nasca.ficha f
 left join nasca.padroncg p
 on f.codsuministro = p.codsuministro
@@ -109,11 +117,49 @@ on f.id = r.idficha and r.tipo_resp='R'
 left join nasca.responsable rp
 on f.id = rp.idficha and r.tipo_resp='P'
 where f.estado_conexion='REAL' and p.urbanizacion='NASCA - APV AMAPROVI'
-
+order by f.codsuministro asc
 
 -- *** 4. SITUACION DE CONEXION ***
 -- ********************************
+select distinct
+p.urbanizacion,
+'11'||'03'||f.distrito||f.sector||f.manzana||f.lote||f.conexion  as codigo_catastral_concatenado,
+f.codsuministro,
+coalesce(r.nombres||' '|| r.apellido_pat||' '||r.apellido_mat) as nombre,
 
+f.tipo_via||' '||f.nombre_via||' '||f.num_municipal as direccion,
+f.num_municipal,
+f.manzana_mun,
+f.lote_mun,
+
+f.tipo_habilitacion||' '||f.nombre_habilitacion as habilitacion,
+
+p.sub_categoria as padronEPS,
+upper(p.estado_agua)as estado_agua_padronEPS,
+upper(p.estado_desague)as estado_desague_padronEPS,
+
+f.estado_agua as estado_agua_proyCAT,
+f.estado_desague as estado_desa_proyCAT,
+
+f.grupo_caracteristico,
+
+f.observaciones,
+
+f.estado_construccion,
+f.sector
+from nasca.ficha f
+left join nasca.padroncg p
+on f.codsuministro = p.codsuministro
+left join nasca.responsable r
+on f.id = r.idficha and r.tipo_resp='R'
+left join nasca.responsable rp
+on f.id = rp.idficha and r.tipo_resp='P'
+where f.estado_conexion='REAL'
+order by sector asc
+
+
+-- *** 5.TIPO DE SERVICIO ***
+-- **************************
 select distinct
 p.urbanizacion,
 '11'||'03'||f.distrito||f.sector||f.manzana||f.lote||f.conexion  as codigo_catastral_concatenado,
@@ -121,13 +167,23 @@ f.codsuministro,
 coalesce(r.nombres||' '|| r.apellido_pat||' '||r.apellido_mat) as nombre,
 f.tipo_via||' '||f.nombre_via||' '||f.num_municipal as direccion,
 f.tipo_habilitacion||' '||f.nombre_habilitacion as habilitacion,
-f.categoria_agua as categoria_agua,
-f.categoria_desague as categoria_desague,
-f.estado_agua,
-f.estado_desague,
+
+p.sub_categoria as sub_categoria_padronEPS, 
+p.tipo_servicio as tipo_servicio_padronEPS,
+upper(p.estado_agua) as estado_agua_padronEPS, 
+upper(p.estado_desague) as estado_desague_padronEPS,
+
+f.categoria_agua as categoria_agua_proyCAT,
+f.categoria_desague as categoria_desague_proyCAT,
+
+f.tipo_servicio as tipo_servicio_proyCAT,
+
+f.estado_agua as estado_agua_proyCAT,
+f.estado_desague as estado_desague_proyCAT,
+
 f.estado_construccion,
 f.observaciones,
-* 
+*
 from nasca.ficha f
 left join nasca.padroncg p
 on f.codsuministro = p.codsuministro
@@ -136,32 +192,7 @@ on f.id = r.idficha and r.tipo_resp='R'
 left join nasca.responsable rp
 on f.id = rp.idficha and r.tipo_resp='P'
 where f.estado_conexion='REAL' and p.urbanizacion='NASCA - APV AMAPROVI'
-
--- *** 5.TIPO DE SERVICIO ***
--- **************************
-
-select distinct
-'11'||'03'||f.distrito||f.sector||f.manzana||f.lote||f.conexion  as codigo_catastral_concatenado,
-f.codsuministro,
-coalesce(r.nombres||' '|| r.apellido_pat||' '||r.apellido_mat) as nombre,
-f.tipo_via||' '||f.nombre_via||' '||f.num_municipal as direccion,
-f.tipo_habilitacion||' '||f.nombre_habilitacion as habilitacion,
-f.categoria_agua as categoria_agua,
-f.categoria_desague as categoria_desague,
-f.estado_agua,
-f.estado_desague,
-f.tipo_servicio,
-f.estado_construccion,
-f.observaciones,
-* 
-from nasca.ficha f
-left join nasca.padroncg p
-on f.codsuministro = p.codsuministro
-left join nasca.responsable r
-on f.id = r.idficha and r.tipo_resp='R'
-left join nasca.responsable rp
-on f.id = rp.idficha and r.tipo_resp='P'
-where f.estado_conexion='REAL' and p.urbanizacion='NASCA - APV AMAPROVI'
+order by f.codsuministro asc
 
 -- *** 6. PREDIOS NO UBICADOS ***
 -- ******************************
@@ -193,9 +224,6 @@ on f.codsuministro = p.codsuministro
 where p.urbanizacion='NASCA - APV AMAPROVI' and estado_conexion is null
 
 
--- **** EXTRA ****
--- ***************
-
 -- TOTAL DE SUMINISTROS DE UNA HABILITACION
 select 
 f.estado_conexion,
@@ -216,14 +244,68 @@ where p.urbanizacion='NASCA - URB CASCO URBANO' and f.codsuministro <> '' and f.
 
 -- TOTAL DE SUMINISTROS QUE NO HAN SIDO TOCADOS
 select 
-f.estado_conexion,
-f.codsuministro,
-p.nombres,
-p.nombre_via,
 p.urbanizacion,
-p.lote,
-* from nasca.ficha f
+p.nombre_via,
+p.nombres,
+f.codsuministro,
+case
+	WHEN (char_length(p.lote)=1) THEN '000'||''||p.lote
+	WHEN (char_length(p.lote)=2) THEN '00'||''||p.lote
+	WHEN (char_length(p.lote)=3) THEN '0'||''||p.lote
+	WHEN (char_length(p.lote)=4) THEN p.lote
+end as lote_catastral,
+p.tipo_servicio,
+p.estado_agua,
+p.estado_desague,
+*
+from nasca.ficha f
+left join nasca.padroncg p
+on f.codsuministro = p.codsuministro 
+where p.urbanizacion='NASCA - URB CASCO URBANO' and f.codsuministro <> '' and f.estado_conexion is null 
+order by p.nombre_via asc
+
+-- BUSQUEDA PADRON CON LOTE (SUPERVISOR) - MIGUEL LANDAETA REPORTE SUPERVISOR CAMPO
+-- TOTAL DE SUMINISTROS QUE NO HAN SIDO TOCADOS
+select 
+p.urbanizacion,
+p.nombre_via,
+p.nombres,
+f.codsuministro,
+case
+	WHEN (char_length(p.lote)=1) THEN '000'||''||p.lote
+	WHEN (char_length(p.lote)=2) THEN '00'||''||p.lote
+	WHEN (char_length(p.lote)=3) THEN '0'||''||p.lote
+	WHEN (char_length(p.lote)=4) THEN p.lote
+end as lote_catastral,
+p.tipo_servicio,
+p.estado_agua,
+p.estado_desague,
+*
+from nasca.ficha f
 left join nasca.padroncg p
 on f.codsuministro = p.codsuministro 
 where p.urbanizacion='NASCA - URB CASCO URBANO' and f.codsuministro <> '' and f.estado_conexion is null
 order by p.nombre_via asc
+
+-- BUSQUEDA POR LOTE - PADRON EPS
+select 
+p.urbanizacion,
+p.nombre_via,
+p.nombres,
+f.codsuministro,
+case
+	WHEN (char_length(p.lote)=1) THEN '000'||''||p.lote
+	WHEN (char_length(p.lote)=2) THEN '00'||''||p.lote
+	WHEN (char_length(p.lote)=3) THEN '0'||''||p.lote
+	WHEN (char_length(p.lote)=4) THEN p.lote
+end as lote_catastral,
+p.tipo_servicio,
+p.estado_agua,
+p.estado_desague,
+*
+from nasca.ficha f
+left join nasca.padroncg p
+on f.codsuministro = p.codsuministro 
+where p.lote='2480'
+order by p.nombre_via asc
+
