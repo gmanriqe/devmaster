@@ -16,6 +16,8 @@ where not(cg.sub_categoria like '%'||f.categoria_agua||'%' or
 -- RTRIM (QUITA ESPACIO DE LA DERECHA)
 -- COALESCE (SI R.NOMBRES ES NULO ENTONCES PONME ESPACIO EN BLANCO)
 
+-- #EJERCICIO 01 - CAMBIO CATEGORIA HACIENDO USO DE LEFT JOIN
+
 select 
 --char_length(r.nombres||' '|| r.apellido_pat||' '||r.apellido_mat),
 --char_length(rp.nombres||' '|| rp.apellido_pat||' '||rp.apellido_mat),

@@ -3,7 +3,6 @@ select * into nasca.ficha_desarrollo
 from nasca.ficha
 where 1=0
 
-
 -- eliminando column
 alter table nasca.ficha_desarrollo drop column nombrecolumna;
 
