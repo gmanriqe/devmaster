@@ -39,7 +39,6 @@ left join nasca.unidad_uso_reporte ur_si
 on f.id = ur_si.idficha and ur_si.posicion='6'
 
 -- *** REPORTEEEEEE ****
-
 select 
 f.id,
 estado_conexion as ESTADO_CONEXION,
@@ -62,6 +61,10 @@ f.tipo_habilitacion as TIPO_HABILITACION,
 f.nombre_habilitacion as NOMBRE_HABILITACION,
 f.sector as SECTOR,
 f.subsector as SUBSECTOR,
+f.coordenada_x as COORDENADA_X,
+f.coordenada_y as COORDENADA_Y,
+f.ruta_distribucion as RUTA_DISTRIBICION,
+f.secuencia as SECUENCIA,
 
 -- ** DATOS PREDIO **
 f.tipo_via as TIPO_VIA,
@@ -231,9 +234,18 @@ f.categoria_desague as CATEGORIA_DESAGUE,
 f.red_distribucion_desague as RED_DISTRIBUCION_DESAGUE,
 f.macrosector_desague as MACROSECTOR_DESAGUE,
 f.sector_desague as SECTOR_DESAGUE,
-f.tipo_caja as TIPO_CAJA,
-f.estado_caja as ESTADO_CAJA,
-f.diametro_tubo as DIAMETRO_TUBO,
+case
+	when f.tipo_caja='0' then ''
+	else f.tipo_caja
+end as TIPO_CAJA,
+case
+	when f.estado_caja='0' then ''
+	else f.estado_caja
+end as ESTADO_CAJA,
+case
+	when f.diametro_tubo='0' then ''
+	else f.diametro_tubo
+end as DIAMETRO_TUBO,
 f.tipo_material_tuberia as TIPO_MATERIAL_TUBERIA,
 f.ubicacion_metros_desague as UBICACION_METROS_DESAGUE,
 /*** FIN DATOS ALCANTARILLADO ***/

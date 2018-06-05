@@ -309,6 +309,31 @@ on f.codsuministro = p.codsuministro
 where p.codcatastral like '%005_______03%' and f.codsuministro <> '' and f.estado_conexion is null
 order by p.nombre_via asc
 
+-- BUSQUEDA DE TODOS LOS SECTORES -- LIMITADO SEGUN GERENCIA COMERCIAL -- SR. ALFREDO PEÑA
+select 
+p.codcatastral,
+p.urbanizacion,
+p.nombre_via,
+p.nombres,
+f.codsuministro,
+case
+	WHEN (char_length(p.lote)=1) THEN '000'||''||p.lote
+	WHEN (char_length(p.lote)=2) THEN '00'||''||p.lote
+	WHEN (char_length(p.lote)=3) THEN '0'||''||p.lote
+	WHEN (char_length(p.lote)=4) THEN p.lote
+end as lote_catastral,
+p.tipo_servicio,
+p.estado_agua,
+p.estado_desague
+from nasca.ficha f
+left join nasca.padroncg p
+on f.codsuministro = p.codsuministro 
+where (p.codcatastral like '%005_______03%' OR p.codcatastral like '%001_______02%'  OR p.codcatastral like '%001_______01%') 
+and f.codsuministro <> '' 
+and f.estado_conexion is null
+order by p.nombre_via asc
+
+
 -- BUSQUEDA POR LOTE - PADRON EPS
 select 
 p.urbanizacion,
