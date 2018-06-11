@@ -44,3 +44,11 @@ select COLUMN_NAME,* from INFORMATION_SCHEMA.COLUMNS
 where TABLE_SCHEMA = 'RUEDA'
 and COLUMN_NAME  like '%TXT%'
 
+-- CARGA SCRIPT DESDE CONSOLA 
+sqlcmd -S /EC2AMAZ-SNO4V2T /prueba
+/S nombre del servidor
+/d nombre de la base de datos
+-U usuario
+-P clave
+
+sqlcmd -S EC2AMAZ-SNO4V2T /d prueba -i C:\Script_Ruedas.sql
