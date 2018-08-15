@@ -1,0 +1,50 @@
+    /* error 
+    .123 {
+        color: green;
+    }*/
+
+    [class="123"]{
+        color: skyblue
+    }
+
+    /*forma de dar estilo con el primer caracter en unicode*/
+    /* https://unicode-table.com/es/#0031 */
+    #\31 23 {
+        color: coral;
+    }
+
+    /*agrupando selectores*/
+    span, strong {
+        color: blueviolet;
+    }
+
+    /*rgb*/
+    .rgb__negro {
+        color: rgb(70,70,70);
+    }
+
+    .rgb__blanco{
+        color: rgb(150,150,150);
+    }
+
+    .descripcion {
+        color: #000;
+    }
+
+    .background {
+        height: 300px;
+        background-color: coral;
+    }
+
+    body {
+        /* height: 1000px; */
+        background-color: #ff2e4d;
+        background-image: url("../img/background.jpeg");
+        background-repeat: no-repeat;
+        background-position: top left; /*(default) top bottom left right center*/
+        background-attachment: scroll; /*scroll(default) fixed*/
+        background-origin: content-box; /*(default) padding-box border-box*/
+        background-blend-mode: multiply; /*tiene muchos tipos de fusiones. Ver en el inspector,*/ /*tipo de fusion entre la imagen y el fondo de color que le pongamos*/
+        background-size: contain;
+        /* background: #999999 url("./img/background.jpeg") repeat fixed center; */
+    }
