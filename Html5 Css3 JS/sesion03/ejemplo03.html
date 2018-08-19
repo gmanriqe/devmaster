@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ejemplo03</title>
+    <style>
+        .box {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            width: 500px;
+            height: 500px;
+            background-color: cyan;
+            position: relative;
+        }
+
+        .firsth__children {
+            width: 200px;
+            height: 200px;
+            background-color: coral;
+            position: absolute;
+            right: 0;
+            top: 0;
+            z-index: 2;
+        }
+
+        .secondary__children {
+            width: 100px;
+            height: 100px;
+            background-color: violet;
+            position: fixed;
+            top: 0;
+            right: 0;
+        }
+
+        .third__children {
+            width: 300px;
+            height: 300px;
+            background-color: skyblue;
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: 1;
+        }
+        /* tarea */
+        img {
+            width: 100%;
+        }
+
+        .background__image {
+            position: relative;
+            /* padding: 10px; */
+        }
+
+        .position {
+            position: absolute;
+            color: #fff
+        }
+
+        .top__left {
+            top: 10px;
+            left: 10px;
+        }
+        
+        .top__right {
+            top: 10px;
+            right: 10px;
+        }
+
+        .center {
+            width: 100%;
+            text-align: center;
+            top: 50%;
+        }
+
+        .bottom_left {
+            bottom: 10px;
+            left: 10px;
+        }
+
+        .bottom_right {
+            bottom: 10px;
+            right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Position y z-index</h1>
+    <div class="box">
+        relative
+        <div class="firsth__children">
+            absolute
+        </div>
+        <div class="secondary__children">
+            fixed <br> tiene relacion al viewport
+        </div>
+        <div class="third__children">
+            absolute
+        </div>
+    </div>
+
+    <h2> Tarea </h2>
+    <section class="background__image">
+        <img src="./img/iron__background.jpg" alt="">
+        <div class="position top__left">top left</div>
+        <div class="position top__right">top right</div>
+        <div class="position center">center</div>
+        <div class="position bottom_left"> bottom left</div>
+        <div class="position bottom_right">bottom right</div>
+    </section>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+</body>
+
+</html>

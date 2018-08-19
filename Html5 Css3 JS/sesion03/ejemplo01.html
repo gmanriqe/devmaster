@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700" rel="stylesheet">
+    <title>ejemplo01</title>
+    <style>
+        p {
+            line-height: 20px;
+            text-align-last: left;
+            font-size: 18px;
+            text-indent: 50%; /*cuanto espacio dejas desde el principio*/
+            direction: rtl; /*right to left/ left to right*/
+        }
+        h2 {
+            font-size: 30px;;
+            letter-spacing: 4px;
+            word-spacing: 30px; /*espacio entre palabra*/
+            text-shadow: 1.7px 2px 0px rgba(0,0,0,.3); /* Ejes X→ Y↓ Z(difuminacion) colorDifuminacion */
+        }
+        a {
+            text-decoration: none;
+            color: coral;
+            text-decoration: line-through;
+        }
+
+        .fuente {
+            font-family: "Times new Roma"; /* Cuando es una fuente de mas de una palabra es necesario poner comillas, cuando el tipo de fuente es una sola letra, puedes ponerlo sin comillas*/
+            font-family: Arial;
+            font-family: 'Roboto Slab', serif;
+            font-weight: lighter; /* 300-lighter / 400-regular|normal / 700-bold / 900-bolder*/
+        }
+
+        /* serif - cuando tienen un remache en el tipo de letra */
+        /* sans-serif -  cuando no tienen remache en el tipo de letra */
+        /* Fantasy - cuando no se puede diferenciar una con otra fuente */
+        /* Monospace - cuando todas las letras tienen un mismo ancho */
+        
+        /* tipo de fuente con un solo peso*/
+        @font-face {
+            font-family: horrendo;
+            src: url('./fonts/horrendo.ttf');
+            /*por defecto este tipo de fuente tiene un font-weight de 700 asi no le asigne*/
+        }
+
+        /* tipo de fuente con mas de un peso*/
+        @font-face {
+            font-family: Antonio;
+            src: url('./fonts/Antonio-Light.ttf');
+            font-weight: 100;
+        }
+
+        @font-face {
+            font-family: Antonio;
+            src: url('./fonts/Antonio-Regular.ttf');
+            font-weight: 400;
+        }
+
+        @font-face {
+            font-family: Antonio;
+            src: url('./fonts/Antonio-Bold.ttf');
+            font-weight: 700;
+        }
+
+        .title__fuente {
+            font-family: horrendo;
+        }
+
+        .parrafo-light {
+            font-family: Antonio;
+            font-weight: 100;
+        }
+
+        .parrafo-regular {
+            font-family: Antonio;
+            font-weight: 400;
+        }
+
+        .parrafo-bold {
+            font-family: Antonio;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h2>Fuentes</h2>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Distinctio beatae, aspernatur nobis fuga sint, adipisci ea iusto nulla tempora eius voluptas magnam minima suscipit, obcaecati consequatur expedita nemo eaque iste.
+        Perspiciatis rem illum porro, quos ullam officiis pariatur dolore aliquam numquam magnam non esse iure atque ex ab, cumque quaerat consequuntur nostrum! Dolorem saepe itaque hic corporis. Dolores, asperiores aliquam.
+        Nihil natus vitae asperiores in quis culpa dignissimos maiores doloremque accusamus mollitia ipsam ab quos, aliquid placeat unde incidunt earum modi, harum provident adipisci rerum voluptates pariatur perspiciatis error. Repellendus!
+        A quas quos impedit vero, aspernatur optio sunt ut corporis dolore nostrum quo odit, deserunt ex. Harum voluptatum magni illo commodi? Laudantium atque non inventore natus ullam ipsam architecto tempore! <a href="#NoHayEnlace">Soy una etiqueta de ancla</a></p>
+    </div>
+
+    <div class="fuente">
+        <h2 class="title__fuente">Fuente descargada desde dafont.com</h2>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt quidem debitis odio eius sint enim quos dolor a cum unde in atque, ipsum fugiat eligendi, dolore ad expedita tempora id!
+        Unde numquam ipsa optio provident consectetur velit consequatur similique, iste odit voluptates saepe, voluptatum praesentium blanditiis modi aliquid asperiores, perspiciatis dolorum. Consequatur reiciendis, provident dolorem velit sed cumque! 
+        <p class="parrafo-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, doloribus ipsam. Iure, ipsum dolore consectetur nihil maxime ipsam nostrum dolorum non ducimus omnis possimus voluptatem sint? Sed aspernatur eos placeat?Saepe commodi id excepturi voluptatum ut quis debitis sint! Magni dicta nemo, vero perspiciatis fugiat repellat amet iste culpa porro, non minima laboriosam excepturi deserunt labore hic aliquam consequatur assumenda?</p>
+        <p class="parrafo-regular">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, doloribus ipsam. Iure, ipsum dolore consectetur nihil maxime ipsam nostrum dolorum non ducimus omnis possimus voluptatem sint? Sed aspernatur eos placeat?Saepe commodi id excepturi voluptatum ut quis debitis sint! Magni dicta nemo, vero perspiciatis fugiat repellat amet iste culpa porro, non minima laboriosam excepturi deserunt labore hic aliquam consequatur assumenda?</p>
+        <p class="parrafo-bold">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, doloribus ipsam. Iure, ipsum dolore consectetur nihil maxime ipsam nostrum dolorum non ducimus omnis possimus voluptatem sint? Sed aspernatur eos placeat?Saepe commodi id excepturi voluptatum ut quis debitis sint! Magni dicta nemo, vero perspiciatis fugiat repellat amet iste culpa porro, non minima laboriosam excepturi deserunt labore hic aliquam consequatur assumenda?</p>
+    </div>
+</body>
+</html>

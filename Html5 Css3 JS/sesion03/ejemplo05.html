@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ejemplo05</title>
+    <style>
+        /* hijo directo */
+        div > p {
+            color:salmon;
+        }
+
+        /* adyacente */
+        div + p {
+            color:goldenrod;
+        }
+
+        .box ~ p {
+            color:firebrick;
+        }
+
+        [class="123"] {
+            color: green;
+        }
+        
+        /* que contenga la palabra principal*/
+        [class~="principal"] {
+            font-size: 23px;
+        }
+        
+        /* que empieze de esta forma en- , debes tomar en cuenta el guion.*/
+        [class|="en"]{
+            text-decoration: line-through;
+        }
+
+        [class*="text"] {
+            text-shadow: 1px 2px 1px rgba(0,0,0,.3);
+        }
+
+        [class=""]
+
+        /* children */
+        ul li:first-child {
+            color: red;
+        }
+
+        ul li:last-child {
+            color: royalblue;
+        }
+
+        footer p:first-of-type {
+            color: red;
+        }
+
+        footer p:last-of-type {
+            color: peru;
+        }
+
+        /*primera linea de texto*/
+        footer p:first-child:first-line {
+            color: orange
+        }
+
+        footer p:first-letter {
+            font-size: 40px;
+        }
+
+        footer i:only-of-type {
+            color: blue
+        }
+
+        ul li:nth-last-of-type(2){
+            color:greenyellow;
+        }
+
+        footer p:last-child:hover {
+            color: green;
+            transition: .4s color;
+        }
+
+        ul li:not(:last-child) {
+            font-family: monospace;
+        }
+        
+        .pseudo__element::before {
+            content: "<";
+            font-weight: bold;
+            color: red;
+        }
+
+        .pseudo__element::after {
+            content: ">";
+            font-weight: bold;
+            color: red;
+        }
+
+        .pseudo__element__two {
+            position: relative;
+            padding: 0 20px;
+            display: inline-block;
+        }
+        
+        .pseudo__element__two::before {
+            content: '';
+            width: 15px;
+            height: 2px;
+            background-color: rgba(0,0,0,.9);
+            display: inline-block;
+            position: absolute;
+            left: 0;
+            top: 50%;
+        }
+
+        .pseudo__element__two::after {
+            content: '';
+            width: 15px;
+            height: 2px;
+            background-color: rgba(0,0,0,.9);
+            display: inline-block;
+            position: absolute;
+            right: 0;
+            top: 50%;
+        }
+    </style>
+</head>
+<body>
+    <h1> Selectores </h1>
+    <div>
+        <p>Soy hijo directo. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloribus eum, libero quaerat iste tempore ut laboriosam? Quibusdam dignissimos odio laudantium officiis quae magnam sit aspernatur sint, consectetur aut impedit voluptatum!</p>
+        <strong> Hola </strong>
+        <section> 
+            <p> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates dolorum molestiae laborum. Officia et laboriosam laudantium odit quidem odio dolorem quod placeat, optio dignissimos sit praesentium debitis harum, sequi nesciunt.</p>
+            <span class="123">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum corporis excepturi cumque voluptate ducimus, culpa soluta neque autem corrupti necessitatibus provident aliquam eaque impedit, natus cum quidem perspiciatis totam laudantium?</span>
+            <p class="parrafo principal">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod tenetur voluptatibus quis provident dolorum quaerat pariatur cum odit atque ad rem commodi ex, animi itaque voluptate reiciendis magni modi delectus.</p>
+            <p class="principal parrafo">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod tenetur voluptatibus quis provident dolorum quaerat pariatur cum odit atque ad rem commodi ex, animi itaque voluptate reiciendis magni modi delectus.</p>
+        </section>
+    </div>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae itaque numquam laudantium blanditiis deserunt reiciendis sapiente, sint ratione vitae mollitia, explicabo impedit obcaecati dignissimos? Nam, id. Pariatur eligendi accusantium consequatur!</p>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iusto esse maiores animi harum culpa tempora temporibus, accusamus, quasi fuga nulla maxime id perferendis? Amet repellat ut libero neque. Voluptatum, minus!</p>
+
+    <div class="box">
+    </div>
+    <p>hola como estas
+        <span class="en-pe">jajajajaja</span>
+        <span class="en-ch">jojojojojo</span>
+    </p>
+    <span> - -- - -- - --</span>
+    <p>espero estes bien</p>
+
+    <section class="box__two">
+        <p class="contienetexto">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iste reprehenderit, eius voluptate ipsum et facere quidem, nesciunt amet tempora cum repudiandae recusandae consectetur facilis mollitia distinctio culpa explicabo molestiae quam?</p>
+        <p class="contienetexto">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Modi, quasi. Dolores nesciunt, molestiae eius natus debitis quisquam autem optio quas nulla temporibus! Eius fugiat doloribus officiis obcaecati, non labore sequi?</p>
+        <p class="contienetexto">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae deleniti, placeat libero perspiciatis eum minima doloribus laborum tempore repellat. Exercitationem blanditiis ex nihil expedita delectus veniam recusandae ratione nemo laborum.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae deleniti, placeat libero perspiciatis eum minima doloribus laborum tempore repellat. Exercitationem blanditiis ex nihil expedita delectus veniam recusandae ratione nemo laborum.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae deleniti, placeat libero perspiciatis eum minima doloribus laborum tempore repellat. Exercitationem blanditiis ex nihil expedita delectus veniam recusandae ratione nemo laborum.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae deleniti, placeat libero perspiciatis eum minima doloribus laborum tempore repellat. Exercitationem blanditiis ex nihil expedita delectus veniam recusandae ratione nemo laborum.</p>
+    </section>
+
+    <ul>
+        <li>element 1</li>
+        <li>element 2</li>
+        <li>element 3</li>
+        <li>element 4</li>
+        <li>element 5</li>
+        <li>element 6</li>
+        <li>element 7</li>
+    </ul>
+
+    <footer>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reiciendis voluptatibus, pariatur magni aliquam velit, iste sed repellendus nulla esse, perferendis officiis temporibus suscipit voluptates earum aut culpa doloremque id? Corrupti.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus debitis quos voluptatibus aspernatur soluta culpa nam cumque cupiditate laborum recusandae.</p>
+        <span>hola</span>
+        <strong>como estas</strong>
+        <i>todo bien?</i>
+        <p>Lorem ipsum dolor sit</p>
+    </footer>
+
+    <h1 class="pseudo__element">Utilizando Pseudo Elementos</h1>
+    <h1 class="pseudo__element__two">TITULO</h1>
+</body>
+</html>

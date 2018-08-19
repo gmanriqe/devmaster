@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ejemplo04</title>
+    <style>
+        img {
+            width: 100%;
+        }
+        
+        /* overflow */
+        .box {
+            width: 200px;
+            height: 300px;
+            margin-bottom: 10px;
+            border: 2px solid rgba(0, 0, 0, .2);
+        }
+
+        .hidden {
+            overflow: hidden;
+            /* default(visible)/hidden/scroll/auto */
+        }
+
+        .scroll {
+            overflow: scroll;
+        }
+
+        .box img {
+            float: right;
+            /* none(default)/ left / right */
+        }
+
+        .box p {
+            clear: right;
+        }
+
+        /* float  */
+        .overflow__auto {
+            border: 1px solid coral;
+            overflow: auto; /* truco para que el contenedor padre no pierda la altura de su contenido */
+        }
+
+        .overflow__auto img {
+            float: left;
+        }
+
+    </style>
+</head>
+
+<body>
+    <h1> Overflow - Float</h1>
+    <div class="box hidden">
+        <img src="./img/casa_papel.png" alt="" width="100px">
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex maxime, maiores libero soluta nemo velit rerum facere ipsa impedit
+            quam voluptatum qui eum, architecto repellendus praesentium doloremque labore dignissimos tempore. Commodi maiores
+            magni nesciunt enim quam quod sapiente repellat recusandae, magnam eaque id temporibus quisquam quidem reprehenderit
+            molestiae non aperiam nulla, eum tempora adipisci aut alias libero fugiat reiciendis? Autem. Atque odit numquam
+            distinctio. Distinctio, facilis, optio consectetur illum eius accusantium culpa similique maiores, vero repudiandae
+            a? Est, aut, eos qui neque nulla debitis quasi ipsam exercitationem, fuga similique natus. Perspiciatis vitae,
+            labore soluta sed laudantium adipisci repellendus deserunt quia blanditiis dolor, facere excepturi velit esse
+            minima neque! Inventore, iste! Modi nihil quis obcaecati amet, distinctio suscipit. Aspernatur, molestiae veritatis!
+            Quaerat magni non sint sit facere perspiciatis recusandae praesentium natus sequi consectetur, officiis dolorem
+            voluptatum esse et quidem ipsam corporis, assumenda facilis mollitia repellat ipsum vero totam odio veniam. Molestiae?
+            Dolore, saepe. Corrupti sequi ex dignissimos qui laudantium asperiores tempora repellat nisi. Error placeat,
+            eius itaque laudantium, quae nulla autem incidunt consequatur voluptas exercitationem eos et dicta numquam nesciunt
+            in. Nostrum praesentium facilis atque incidunt porro ratione, et magni. Fugiat eveniet, blanditiis eligendi omnis
+            temporibus voluptatibus animi recusandae asperiores culpa consequuntur mollitia neque, accusantium vero vel laboriosam
+            suscipit, eos distinctio? Non, obcaecati enim ipsa eum neque facere beatae voluptatibus est deserunt, aut culpa,
+            ex fugit doloremque consectetur repellendus iure animi et ipsum unde vero cum atque itaque molestiae. Explicabo,
+            culpa.
+        </p>
+    </div>
+    <div class="box scroll">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex maxime, maiores libero soluta nemo velit rerum facere ipsa impedit
+        quam voluptatum qui eum, architecto repellendus praesentium doloremque labore dignissimos tempore. Commodi maiores
+        magni nesciunt enim quam quod sapiente repellat recusandae, magnam eaque id temporibus quisquam quidem reprehenderit
+        molestiae non aperiam nulla, eum tempora adipisci aut alias libero fugiat reiciendis? Autem. Atque odit numquam distinctio.
+        Distinctio, facilis, optio consectetur illum eius accusantium culpa similique maiores, vero repudiandae a? Est, aut,
+        eos qui neque nulla debitis quasi ipsam exercitationem, fuga similique natus. Perspiciatis vitae, labore soluta sed
+        laudantium adipisci repellendus deserunt quia blanditiis dolor, facere excepturi velit esse minima neque! Inventore,
+        iste! Modi nihil quis obcaecati amet, distinctio suscipit. Aspernatur, molestiae veritatis! Quaerat magni non sint
+        sit facere perspiciatis recusandae praesentium natus sequi consectetur, officiis dolorem voluptatum esse et quidem
+        ipsam corporis, assumenda facilis mollitia repellat ipsum vero totam odio veniam. Molestiae? Dolore, saepe. Corrupti
+        sequi ex dignissimos qui laudantium asperiores tempora repellat nisi. Error placeat, eius itaque laudantium, quae
+        nulla autem incidunt consequatur voluptas exercitationem eos et dicta numquam nesciunt in. Nostrum praesentium facilis
+        atque incidunt porro ratione, et magni. Fugiat eveniet, blanditiis eligendi omnis temporibus voluptatibus animi recusandae
+        asperiores culpa consequuntur mollitia neque, accusantium vero vel laboriosam suscipit, eos distinctio? Non, obcaecati
+        enim ipsa eum neque facere beatae voluptatibus est deserunt, aut culpa, ex fugit doloremque consectetur repellendus
+        iure animi et ipsum unde vero cum atque itaque molestiae. Explicabo, culpa.
+    </div>
+    <div class="overflow__auto">
+        <img src="./img/casa_papel.png" alt="">
+    </div>
+</body>
+
+</html>
