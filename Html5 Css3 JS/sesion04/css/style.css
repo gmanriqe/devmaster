@@ -1,0 +1,16 @@
+[class*="elementos"] {
+    background-color: #dddfe2;
+}
+
+.elementos1 {
+    background-color: #dddfe2;
+    padding: 10px;
+}
+
+.elementos2 {
+    height: 500px;
+}
+
+.card {
+    margin-bottom: 10px;
+}

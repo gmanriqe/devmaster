@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ejemplo 01 - Flexbox</title>
+    <style>
+        .flex__container__one {
+            height: 70px;
+            background-color: goldenrod;
+
+            display: flex;
+            flex-direction: row; /* default */
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .flex__item {
+            width: 200px;
+            height: 100px;
+            background-color: #fff;
+            color: rgba(0,0,0,.2);
+            padding: 20px;
+            margin: 5px;
+        }
+
+        .logo {
+            width: 100px;
+        }
+
+        .nav {
+            padding-left: 0;
+            margin: 0;
+            list-style-type: none;
+
+            display: flex;
+            align-items: center;
+        }
+
+        .list__item {
+            margin-left: 10px;
+        }
+        
+        .item {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        /* contenedor */
+        .contenedor {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+
+            width: 700px;
+            height: 500px;
+
+            background-color: skyblue;
+        }
+
+        .elemento {
+            width: 200px;
+            height: 150px;
+            background-color: tomato;
+        }
+
+        .contenedor .elemento:nth-child(1){
+            order: 5;
+            color: red;
+        }
+        .contenedor .elemento:nth-child(2){
+            order: 3;
+            color: blue;
+        }
+        .contenedor .elemento:nth-child(3){
+            order: 2;
+            color: yellow;
+        }
+        .contenedor .elemento:nth-child(4){
+            order: 1;
+            color: yellowgreen;
+        }
+        .contenedor .elemento:nth-child(5){
+            order: 1;
+            color: cornflowerblue;
+        }
+    </style>
+</head>
+<body>
+    <div class="flex__container__one">
+        <img class="logo" src="http://www.devmaster.pe/assets/img/logo_18_principal.svg" alt="">
+
+        <ul class="nav">
+            <li class="list__item"><a class="item" href="#NoHayEnlace">item1</a></li>
+            <li class="list__item"><a class="item" href="#NoHayEnlace">item2</a></li>
+            <li class="list__item"><a class="item" href="#NoHayEnlace">item3</a></li>
+        </ul>
+        <!-- <div class="flex__item">elemento 1</div>
+        <div class="flex__item">elemento 2</div>
+        <div class="flex__item">elemento 3</div>
+        <div class="flex__item">elemento 4</div>
+        <div class="flex__item">elemento 5</div> -->
+    </div>
+
+    <div class="contenedor">
+        <div class="elemento">elemento 1</div>
+        <div class="elemento">elemento 2</div>
+        <div class="elemento">elemento 3</div>
+        <div class="elemento">elemento 4</div>
+        <div class="elemento">elemento 5</div>
+    </div>
+</body>
+</html>
