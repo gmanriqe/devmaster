@@ -21,21 +21,21 @@
     <link rel="stylesheet" href="css/reset.css">
     <!-- Style -->
     <link rel="stylesheet" href="css/style.css">
-    <title>landy</title>
+    <title>Landy | Home</title>
 </head>
 
 <body>
     <!-- https://demo.bootstrapious.com/landy/1-0/# -->
     <!-- navegation -->
     <div class="main_navegation">
-        <nav class="navbar navbar-expand-md navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <!-- navbar-expand-sm: cuando quiero que aparesca el menu -->
             <a class="navbar-brand" href="#">Landy</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
                 aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse d-md-flex justify-content-end" id="navbarNav">
+            <div class="collapse navbar-collapse d-lg-flex justify-content-lg-end" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item active">
                         <a class="nav-link" href="#">About Us <span class="sr-only">(current)</span></a>
@@ -88,26 +88,32 @@
                     <h2 class="section_title text-center">How it works</h2>
                 </div>
                 <div class="col-md-12 text-center">
-                    <div class="works_image">
+                    <div class="works_image" data-number="primary">
+                        <img src="img/preview-1.png" alt="">
+                    </div>
+                    <div class="works_image" data-number="secondary">
+                        <img src="img/preview-2.png" alt="">
+                    </div>
+                    <div class="works_image" data-number="tertiary">
                         <img src="img/preview-3.png" alt="">
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="work_item">
+                    <div class="work_item active" id="primary">
                         <span class="work_number">1</span>
                         <p class="work_description">Lorem ipsum dolor sit, elit elit elit elit adipisicing elit. Magnam
                             necessitatibus temporibus porrs.</p>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="work_item active">
+                    <div class="work_item" id="secondary">
                         <span class="work_number">2</span>
                         <p class="work_description">Lorem ipsum dolor sit, elit elit elit elit adipisicing elit. Magnam
                             necessitatibus temporibus porrs.</p>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="work_item">
+                    <div class="work_item" id="tertiary">
                         <span class="work_number">3</span>
                         <p class="work_description">Lorem ipsum dolor sit, elit elit elit elit adipisicing elit. Magnam
                             necessitatibus temporibus porrs.</p>
@@ -137,7 +143,7 @@
     <!-- features -->
     <div class="main_feature padding_section">
         <div class="container">
-            <div class="row mt-4 mb-4 d-flex align-items-center">
+            <div class="row mt-4 mb-4 d-flex flex-column-reverse flex-md-row align-items-center">
                 <div class="col-md-6">
                     <div class="feature__left">
                         <img class="feature_img" src="img/medal.svg" alt="">
@@ -154,7 +160,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row mt-4 mb-4 d-flex flex-row-reverse align-items-center">
+            <div class="row mt-4 mb-4 d-flex flex-column-reverse flex-md-row-reverse align-items-center">
                 <div class="col-md-6">
                     <div class="feature__left">
                         <img class="feature_img" src="img/hourglass.svg" alt="">
@@ -171,7 +177,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row mt-4 mb-4  d-flex align-items-center">
+            <div class="row mt-4 mb-4 d-flex flex-column-reverse flex-md-row align-items-center">
                 <div class="col-md-6">
                     <div class="feature__left">
                         <img class="feature_img" src="img/cup.svg" alt="">
@@ -263,7 +269,7 @@
                         but the majority have</p>
                 </div>
                 <div class="col-md-12">
-                    <div class="row owl-carousel">
+                    <div class="owl-carousel">
                         <div class="testimonial_item">
                             <img class="testimonial_image" src="img/avatar-five.jpg" alt="">
                             <p class="testimonial_item_description">Lorem Ipsum is simply dummy text of the printing
@@ -312,7 +318,7 @@
         </div>
     </div>
 
-    <!-- footer -->
+    <!-- navegation footer -->
     <div class="main_footer padding_section">
         <div class="container">
             <div class="row">
@@ -331,27 +337,27 @@
                     <h3 class="footer_title_navegation">Selected Cases</h3>
                     <ul class="footer_navegation">
                         <li><a class="footer_navegation_item" href="">Guess Conntect</a></li>
+                        <li><a class="footer_navegation_item" href="">Postly</a></li>
                         <li><a class="footer_navegation_item" href="">Iris Vor Arnim</a></li>
-                        <li><a class="footer_navegation_item" href="">Guess Conntect</a></li>
-                        <li><a class="footer_navegation_item" href="">Iris Vor Arnim</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <h3 class="footer_title_navegation">Selected Cases</h3>
-                    <ul class="footer_navegation">
-                        <li><a class="footer_navegation_item" href="">Iris Vor Arnim</a></li>
-                        <li><a class="footer_navegation_item" href="">Guess Conntect</a></li>
-                        <li><a class="footer_navegation_item" href="">Iris Vor Arnim</a></li>
-                        <li><a class="footer_navegation_item" href="">Guess Conntect</a></li>
+                        <li><a class="footer_navegation_item" href="">Yapital</a></li>
                     </ul>
                 </div>
                 <div class="col-md-6 col-lg-3">
                     <h3 class="footer_title_navegation">Selected Cases</h3>
                     <ul class="footer_navegation">
                         <li><a class="footer_navegation_item" href="">Guess Conntect</a></li>
+                        <li><a class="footer_navegation_item" href="">Postly</a></li>
                         <li><a class="footer_navegation_item" href="">Iris Vor Arnim</a></li>
-                        <li><a class="footer_navegation_item" href="">Iris Vor Arnim</a></li>
+                        <li><a class="footer_navegation_item" href="">Yapital</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <h3 class="footer_title_navegation">Selected Cases</h3>
+                    <ul class="footer_navegation">
                         <li><a class="footer_navegation_item" href="">Guess Conntect</a></li>
+                        <li><a class="footer_navegation_item" href="">Postly</a></li>
+                        <li><a class="footer_navegation_item" href="">Iris Vor Arnim</a></li>
+                        <li><a class="footer_navegation_item" href="">Yapital</a></li>
                     </ul>
                 </div>
             </div>
@@ -365,7 +371,7 @@
                 <div class="col-md-12">
                     <div class="footer d-md-flex justify-content-between">
                         <p>© 2017 Landy.com. All rights reserved.</p>
-                        <p>Template By <a href="#">Bootstrapious</a></p>
+                        <p>Template By <a href="#">DevMaster</a></p>
                     </div>
                 </div>
             </div>
@@ -378,26 +384,8 @@
     <script src="js/bootstrap.min.js"></script>
     <!-- Owl Carrousel -->
     <script src="js/owl.carousel.min.js"></script>
-
-    <script>
-        $(document).ready(function () {
-            $(".owl-carousel").owlCarousel({
-                // stagePadding: 20,
-                loop: false,
-                responsiveClass: true,
-                margin: 15,
-                nav: true,
-                responsive: {
-                    0: {
-                        items: 1
-                    },
-                    992: {
-                        items: 2
-                    }
-                }
-            });
-        });
-    </script>
+    <!-- JS -->
+    <script src="js/app.js"></script>
 </body>
 
 </html>
