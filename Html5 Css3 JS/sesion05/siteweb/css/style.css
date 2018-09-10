@@ -272,9 +272,13 @@ testimonial
 .main_testimonial .owl-nav {
   font-size: 50px;
   text-align: center;
-  margin-top: -30px; }
+  margin-top: -10px; }
   .main_testimonial .owl-nav > [type*="button"] {
-    margin: 0 20px; }
+    margin: 0 25px;
+    outline: none; }
+    .main_testimonial .owl-nav > [type*="button"] span {
+      font-weight: 300;
+      font-size: 40px; }
 
 /*****************
 suscribe
@@ -302,7 +306,8 @@ suscribe
         border-radius: 40px;
         background-color: transparent;
         outline: none;
-        padding: 0 210px 0 30px; }
+        padding: 0 210px 0 30px;
+        caret-color: var(--azul); }
         .main_subscribe .suscribe_form form input::-webkit-input-placeholder {
           color: #757575;
           font-weight: 100; }
@@ -321,45 +326,97 @@ suscribe
           border: 1px solid var(--azul); }
       .main_subscribe .suscribe_form form .btn_form {
         position: absolute;
-        top: 8px;
-        right: 8px;
-        height: 52px;
-        padding: 15px 70px; }
+        top: 9px;
+        right: 10px;
+        height: 50px;
+        padding: 15px 50px; }
 
 /*****************
-suscribe
+footer
 *****************/
 .main_footer .footer_title {
-  font-size: 23px;
+  font-size: 28px;
   font-weight: 800;
   margin-bottom: 20px; }
+
+.main_footer .footer_phone {
+  display: inline-block;
+  margin-bottom: 20px;
+  margin-top: 15px; }
 
 .main_footer .footer_title_navegation {
   font-weight: 800;
   font-size: 20px;
   margin-bottom: 20px; }
 
-.main_footer .footer_navegation li {
-  line-height: 30px; }
-  .main_footer .footer_navegation li a {
-    color: #888888; }
+.main_footer .footer_navegation {
+  margin-bottom: 30px; }
+  .main_footer .footer_navegation li {
+    line-height: 30px; }
+    .main_footer .footer_navegation li:not(:last-child) {
+      margin-right: 5px; }
+    .main_footer .footer_navegation li .footer_navegation_item {
+      color: #888; }
+    .main_footer .footer_navegation li .footer_social {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: inline-block;
+      text-align: center;
+      background-color: #000; }
+      .main_footer .footer_navegation li .footer_social i {
+        color: var(--white);
+        font-size: 14px;
+        line-height: 30px; }
+
+.main_footer_two .footer {
+  border-top: 1px solid #ddd;
+  padding: 30px 0; }
+  .main_footer_two .footer p {
+    color: #333; }
+    .main_footer_two .footer p a {
+      color: #333;
+      -webkit-transition: color 0.5s;
+      -o-transition: color 0.5s;
+      transition: color 0.5s; }
+      .main_footer_two .footer p a:hover {
+        text-decoration: none;
+        color: var(--azul); }
 
 /*****************
 media querie
 *****************/
 @media screen and (min-width: 993px) and (max-width: 1200px) {
-  body {
-    background-color: coral; }
   .main_banner .banner_img {
-    width: 100%; } }
+    width: 100%; }
+  .main_testimonial .testimonial_item .testimonial_image {
+    top: -40px;
+    left: 50%;
+    -webkit-transform: translateX(-40px);
+    -ms-transform: translateX(-40px);
+    transform: translateX(-40px); } }
 
 @media screen and (min-width: 769px) and (max-width: 992px) {
-  body {
-    background-color: green; } }
+  .main_testimonial .testimonial_item {
+    padding: 80px 40px 40px 40px; }
+    .main_testimonial .testimonial_item .testimonial_image {
+      top: -40px;
+      left: 50%;
+      -webkit-transform: translateX(-40px);
+      -ms-transform: translateX(-40px);
+      transform: translateX(-40px); }
+  .main_morefeature .morefeature_description {
+    width: 100%; }
+  .main_about .about_description {
+    width: 100%; }
+  .main_subscribe .suscribe_form form input {
+    margin-bottom: 20px; }
+  .main_subscribe .suscribe_form form .btn_form {
+    position: initial;
+    width: 100%;
+    height: 54px; } }
 
 @media screen and (max-width: 768px) {
-  body {
-    background-color: red; }
   .main_banner .banner_img {
     width: 100%; }
   .main_banner .btn_landy {
@@ -367,4 +424,18 @@ media querie
     .main_banner .btn_landy:first-of-type {
       margin-bottom: 10px; }
     .main_banner .btn_landy:last-of-type {
-      margin-left: 0; } }
+      margin-left: 0; }
+  .main_about .about_description {
+    width: 100%; }
+  .main_testimonial .testimonial_item .testimonial_image {
+    top: -40px;
+    left: 50%;
+    -webkit-transform: translateX(-40px);
+    -ms-transform: translateX(-40px);
+    transform: translateX(-40px); }
+  .main_morefeature .morefeature_description {
+    width: 100%; }
+  .main_footer_two .footer {
+    text-align: center; }
+    .main_footer_two .footer p:first-child {
+      margin-bottom: 10px; } }
