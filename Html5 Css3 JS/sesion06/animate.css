@@ -1,0 +1,193 @@
+.main_box {
+  display: flex;
+}
+
+.box {
+  margin-left: 100px;
+  margin-bottom: 100px;
+  width: 150px;
+  height: 150px;
+  /* background-color: coral; */
+  transition: all 0.5s;
+  border: 1px dashed salmon;
+
+  /* transform: translate(50%, 10px); 
+    transform: translateX(10px);
+    transform: translateY(20px);
+    transform: scale(2);
+    skewX, skewY
+    transform: skew(-10deg, 20deg);*/
+}
+
+.box_animate {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  animation-name: cuadrado;
+  /*nombre de la animacion*/
+  animation-duration: 5s;
+  /*tiempo de la animacion*/
+
+  animation-direction: normal;
+  animation-iteration-count: 2;
+  /* animation-delay: 2s; un tiempo de espera para que comience la animacion */
+}
+
+/****************
+LOADING
+****************/
+
+.loading {
+  /* display: inline-block; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 150px;
+  height: 150px;
+  border-top: 10px solid skyblue;
+  border-right: 10px solid white;
+  border-bottom: 10px solid white;
+  border-left: 10px solid white;
+  border-radius: 50%;
+
+  /* centering */
+  /* position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); */
+
+  animation-name: loading;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+i {
+  color: skyblue;
+  font-size: 35px;
+
+  animation-name: loading-icon;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  /* animation-play-state: paused; */
+}
+
+/***************
+ BALL 
+***************/
+.main_ball {
+  display: inline-block;
+  /* outline: 1px solid red; */
+  height: 200px;
+  position: relative;
+}
+
+.ball {
+  /* position: relative; */
+
+  display: inline-block;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(
+    circle,
+    rgba(89, 137, 229, 1) 0%,
+    rgba(55, 207, 220, 1) 100%
+  );
+  border-radius: 50%;
+
+  animation-name: ball;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+.ball_shadow {
+  content: "";
+  display: inline-block;
+  /* width: 150px; */
+  /* height: 20px; */
+  background-color: rgba(0, 0, 0, 0.2);
+
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+
+  border-radius: 50%;
+
+  animation-name: psedo-element;
+  animation-duration: 1s;
+  animation-delay: 0.1s;
+  animation-iteration-count: infinite; /*cuantas veces quieres que se anime*/
+  animation-direction: alternate; /*para que la animacion vuelva a repetir, sin la pausa que tiene por defecto*/
+}
+
+/***************
+KEYFRAMES
+***************/
+
+@keyframes cuadrado {
+  /*recuerda inicializar y finalizar una propiedad, para que esta funcione*/
+  0% {
+    border-radius: 0;
+    background-color: coral;
+    transform: translateX(0) rotate(0);
+  }
+
+  50% {
+    background-color: blue;
+  }
+
+  100% {
+    border-radius: 50%;
+    background-color: skyblue;
+    transform: translateX(300px) rotate(45deg);
+  }
+}
+
+@keyframes loading {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes loading-icon {
+  from {
+    opacity: 0;
+    transform: rotate(360deg);
+  }
+
+  to {
+    opacity: 1;
+    transform: rotate(0);
+  }
+}
+
+@keyframes ball {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(-100px);
+  }
+}
+
+@keyframes psedo-element {
+  0% {
+    width: 30px;
+    height: 3px;
+  }
+
+  100% {
+    width: 130px;
+    height: 10px;
+  }
+}

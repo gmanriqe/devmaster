@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Animacion</title>
+    <style>
+        /***************
+        ANIMATE TEXT 
+        ***************/
+        body {
+            height: 100vh;
+            outline: 1px solid red;
+            font-size: 50px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            /* position: relative; */
+            overflow: hidden;
+        }
+
+        .animate_text {
+            animation-name: animate-text;
+            animation-duration: 3s;
+            animation-iteration-count: infinite;
+
+        }
+
+        .right-delay {
+            animation-delay: .5s;
+        }
+
+        @keyframes animate-text {
+            0% {
+                transform: translateY(100px);
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            100% {
+                opacity: 0;
+                transform: scale(90);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="animate_text">
+        Dev
+    </div>
+    <div class="animate_text right-delay">
+        Master
+    </div>
+</body>
+
+</html>
