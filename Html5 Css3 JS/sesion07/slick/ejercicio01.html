@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- css slick -->
+    <link rel="stylesheet" type="text/css" href="css/slick.css" />
+    <link rel="stylesheet" href="css/slick-theme.css">
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <!-- css -->
+    <link rel="stylesheet" href="css/style.css"> 
+    <title>Slick - Magnific Popup</title>
+</head>
+
+<body>
+    <div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1>Utilizando slick</h1>
+                </div>
+                <div class="col-12">
+                    <div class="galeria">
+                        <div>
+                            <!-- contenido item slick-->
+                            <h3><a href="">1er Slider</a></h3>
+                            <img src="https://placeimg.com/640/300/tech" alt="">
+                        </div>
+                        <div>
+                            <!-- contenido item slick-->
+                            <h3><a href="">2do Slider</a></h3>
+                            <img src="https://placeimg.com/640/300/tech" alt="">
+                        </div>
+                        <div>
+                            <!-- contenido item slick-->
+                            <h3><a href="">3ero Slider</a></h3>
+                            <img src="https://placeimg.com/640/300/tech" alt="">
+                        </div>
+                        <div>
+                            <!-- contenido item slick-->
+                            <h3><a href="">4to Slider</a></h3>
+                            <img src="https://placeimg.com/640/300/tech" alt="">
+                        </div>
+                        <div>
+                            <!-- contenido item slick-->
+                            <h3><a href="">5to Slider</a></h3>
+                            <img src="https://placeimg.com/640/300/tech" alt="">
+                        </div>
+                        <div>
+                            <!-- contenido item slick-->
+                            <h3><a href="">6to Slider</a></h3>
+                            <img src="https://placeimg.com/640/300/tech" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <!-- js slick -->
+    <script type="text/javascript" src="js/slick.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".galeria").slick({
+                infinite: true,
+                slidesToShow: 3,
+                slidesToScroll: 3,
+                // prevArrow: '<div>anterior<div>',
+                // nextArrow: '<div>siguiente<div>'
+            });
+        })
+    </script>
+</body>
+
+</html>

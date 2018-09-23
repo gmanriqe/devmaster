@@ -47,6 +47,35 @@ body {
   padding: 140px 0; }
 
 /*****************
+scroll top
+*****************/
+.scrollTop {
+  position: fixed;
+  right: -48px;
+  top: 50%;
+  background: -webkit-gradient(linear, left top, right top, from(#5989e5), to(#37cfdc));
+  background: -webkit-linear-gradient(left, #5989e5 0%, #37cfdc 100%);
+  background: -o-linear-gradient(left, #5989e5 0%, #37cfdc 100%);
+  background: linear-gradient(90deg, #5989e5 0%, #37cfdc 100%);
+  color: var(--white);
+  font-weight: 100;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  padding: 10px 10px;
+  cursor: pointer;
+  opacity: 1;
+  -webkit-transition: all .4s ease;
+  -o-transition: all .4s ease;
+  transition: all .4s ease; }
+  .scrollTop:hover {
+    right: 0; }
+
+.display-scroll {
+  opacity: 0; }
+
+/*****************
 navegation
 *****************/
 .main_navegation .navbar {

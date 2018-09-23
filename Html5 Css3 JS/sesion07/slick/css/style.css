@@ -1,0 +1,36 @@
+.slick-slide {
+    margin: 0 10px;
+}
+/* the parent */
+.slick-list {
+    margin: 0 -10px;
+}
+
+img {
+    width: 100%;
+    max-width: 357px;
+}
+
+.slick-prev {
+    background-image: url('../imgs/prev.png');
+    background-size: cover;
+}
+
+button.slick-next {
+    transform: rotate(180deg);
+}
+.slick-next {
+    background-image: url('../imgs/prev.png');
+    background-size: cover;
+}
+
+.slick-prev:hover, .slick-prev:focus, .slick-next:hover, .slick-next:focus {
+    color: transparent;
+    outline: none;
+    background: inherit;
+}
+
+.slick-prev:before,
+.slick-next:before  {
+    content: none;
+}

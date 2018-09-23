@@ -40,4 +40,25 @@ $(document).ready(function(){
         }
     });
 
+    // scroll
+    $(window).on('scroll',function(){
+        var sizeTop = $(window).scrollTop();
+        if( sizeTop > 700){
+            $('.scrollTop').removeClass('display-scroll');
+        }else {
+            $('.scrollTop').addClass('display-scroll');
+        }
+    })
+
+    $('.scrollTop').on('click',function(){
+        $('html, body').animate({ scrollTop: 0 }, 1000 );
+    })
+
+    $('.nav-link').on('click',function(){
+        var link = $(this).attr('href');
+        // console.log($(this));
+        /* .stop() para parar cualquier animacion 
+        que este ocurriendo antes en este caso la animacion anterior */
+        $('html, body').stop().animate({ scrollTop: $(link).offset().top },1000)
+    })
 })
