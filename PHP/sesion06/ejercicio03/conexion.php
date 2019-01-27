@@ -31,7 +31,7 @@
     </style>
 </head>
 <body>
-    <form action="">
+    <form action="conexion.php" method="POST">
         <table>
             <tr>
                 <td>idProducto a modificar</td>
@@ -40,7 +40,7 @@
             </tr>
             <tr>
                 <td>nuevo nombre producto</td>
-                <td><input type="text" ></td>
+                <td><input type="text" name="nombreProducto"></td>
             </tr>
             <tr >
                 <td colspan="2"><input type="submit" name="modificar" value="modificar"></td>
@@ -59,18 +59,23 @@
         exit();
     }
 
+    $id_producto = $_POST['idProducto'];
+    $nombre_producto = $_POST['nombreProducto'];
+
     $sql = "SELECT * FROM productos";
+    $sql_update = "UPDATE productos SET vNombreProducto='$nombre_producto' WHERE iIdProducto=$id_producto";
 
     $resultado = $mysqli->query($sql) or die($mysqli->error. "en la linea".(__LINE__-1));
+    $resultado_2 = $mysqli->query($sql_update) or die($mysqli->error. "en la linea".(__LINE__-1));
 
-    $numeroregistros = $resultado->num_rows;
+    $numero_registros = $resultado->num_rows;
 
-    echo "<p>El numero de registros de usuarios es: <p>".$numeroregistros;
+    echo "<p>El numero de registros de usuarios es:".$numero_registros."<p>";
 
     echo "<div class='content-table'><table class='table-list'><tr><th>idProducto</th><th>Nombre Producto</th><th>Proveedor</th><th>Categoría</th><th>Cantidad Producto</th><th>Precio Unidad</th><th>Unidad Existente</th></tr>";
-    while($numeroregistros = $resultado->fetch_assoc()){
+    while($numero_registros = $resultado->fetch_assoc()){
         echo "<tr>";
-        foreach ($numeroregistros as $key => $value) {
+        foreach ($numero_registros as $key => $value) {
             echo "<td>". $value."</td>";
         }
         echo "<tr>";

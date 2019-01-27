@@ -1,0 +1,4 @@
+Usuario: En la tabla usuario añadir nivel;
+- tendras usuario tipo de nivel: Adm y Usu
+- Adm: visualizaras dos botones Usuarios y Producto
+- Usu: Visualizaras un boton Producto
