@@ -1,0 +1,14 @@
+body {
+    /* width: 800px; */
+}
+
+form {
+    height: 350px;
+    margin-top: 20px;
+}
+.logo-form-container {
+    text-align: center;
+}
+#userimg {
+    width: 80px;
+}
