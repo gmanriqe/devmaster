@@ -2,6 +2,21 @@
 <?php include ('includes/header.php');?>
     <div class="container">
         <div class="row">
+            <div class="col-md-12"> <!-- Alert -->
+                <!-- alertas de bootstrap -->
+                <!-- para mensajes de alerta utilizaremos la variable global de sesiones y la declaras en la conexion -->
+                <?php  if(isset($_SESSION['message'])) { ?>
+                    <div class="alert alert-<?= $_SESSION['message_type']?> alert-dismissible fade show" role="alert">
+                        <strong><?= $_SESSION['message']?></strong>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                <?php } ?>
+                
+                <?php session_unset(); ?>
+                
+            </div> <!-- Alert -->
             <div class="col-md-12">
                 <table class="table table-bordered">
                     <thead class="thead-dark">
@@ -35,7 +50,7 @@
                                     <a href="edit_prod.php?id=<?php echo $row['iIdProducto'];?>" class="btn btn-warning">
                                         <i class="fas fa-edit"></i>
                                     </a>
-                                    <a class="btn btn-danger">
+                                    <a href="delete_prod.php?id=<?php echo $row['iIdProducto'];?>" class="btn btn-danger">
                                         <i class="fas fa-trash-alt"></i>
                                     </a>
                                 </td>

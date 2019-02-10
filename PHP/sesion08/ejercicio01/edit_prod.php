@@ -24,8 +24,10 @@
     //     echo $key;
     // }
     
+    // Esto si funciona
+    echo hola;
+    echo $_POST['idProducto'];
     if(isset($_POST['idProducto'])) {
-        echo $_POST['edit'];
 
        $id_producto = $_POST['idProducto'];
        $nombre_producto = $_POST['nombreProducto'];
@@ -35,21 +37,14 @@
        $unidad_existente = $_POST['unidadExistente'];
 
        $query_update = "UPDATE productos SET vNombreProducto='$nombre_producto', vProveedor='$nombre_proveedor', vCategoría='$nombre_categoria', PrecioUnidad=$precio_unidad, UnidadesEnExistencia=$unidad_existente WHERE iIdProducto=$id_producto";
-       mysqli_query($conn, $query_update);
-    //    header('location: index.php');
+
+       echo $query_update;
+       mysqli_query($conn,$query_update);
+
+       $_SESSION['message']='Se actualizo correctamente.';
+       $_SESSION['message_type']='success';
+       header('location: index.php');
     }
-
-    //esto no funciona 😕
-    if(isset($_POST['edit'])){
-       
-        $id_producto = $_POST['idProducto'];
-        echo $id_prod;
-
-        $query_update = "UPDATE productos SET vNombreProducto='$nombre_producto', vProveedor='$nombre_proveedor', vCategoría='$nombre_categoria', PrecioUnidad=$precio_unidad, UnidadesEnExistencia=$unidad_existente WHERE iIdProducto=$id_producto";
-        mysqli_query($conn, $query_update);
-
-        header("location: edit_prod.php?id=$id");
-    }    
 ?>
 <?php include ('includes/header.php') ;?>
 <div class="container">
@@ -62,7 +57,7 @@
                 <div class="card-body">
                     <form action="edit_prod.php" method="POST">
                         <div class="form-group">
-                             <input type="text" class="form-control" name="idProducto" value="<?php echo $id_producto;?>" placeholder="Nombre Producto" disabled>
+                             <input type="text" class="form-control" name="idProducto" value="<?php echo $id_producto;?>" placeholder="Nombre Producto">
                         </div>
                         <div class="form-group">
                             <input type="text" class="form-control" name="nombreProducto" value="<?php echo $producto;?>" placeholder="Nombre Producto">
