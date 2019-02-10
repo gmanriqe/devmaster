@@ -38,7 +38,7 @@
 
        $query_update = "UPDATE productos SET vNombreProducto='$nombre_producto', vProveedor='$nombre_proveedor', vCategoría='$nombre_categoria', PrecioUnidad=$precio_unidad, UnidadesEnExistencia=$unidad_existente WHERE iIdProducto=$id_producto";
 
-       echo $query_update;
+    //    echo $query_update;
        mysqli_query($conn,$query_update);
 
        $_SESSION['message']='Se actualizo correctamente.';

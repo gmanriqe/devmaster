@@ -18,6 +18,10 @@
                 
             </div> <!-- Alert -->
             <div class="col-md-12">
+                <div>
+                    <a class="btn btn-success" href="insert_prod.php"><i class="fas fa-plus-circle"></i> Insertar<a>
+                </div>
+                <br>
                 <table class="table table-bordered">
                     <thead class="thead-dark">
                         <tr>
